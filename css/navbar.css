@@ -1,0 +1,47 @@
+/* Basic styles for navbar */
+.navbar {
+    display: flex;
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #555;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 200px;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    display: block;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #666;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}

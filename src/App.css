@@ -45,3 +45,80 @@
   background-color: #004080;
 
 }
+
+.hero-section {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #ffffff;
+}
+
+.hero-content {
+  padding-left: 100px;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.gov-navbar {
+  background: linear-gradient(90deg, #0052A5 0%, #0073E6 100%);
+  font-family: "Segoe UI", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.nav-link-custom {
+  color: #e6e6e6 !important;
+  font-weight: 600;
+  margin: 0 10px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-link-custom:hover {
+  color: #ffffff !important;
+  border-bottom: 3px solid #ffffff;
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+}
+
+.services-section {
+  background-color: #f8f9fa;
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}

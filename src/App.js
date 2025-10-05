@@ -16,38 +16,41 @@ import SafetyScam from "./pages/safety-scam";
 function App() {
   return (
 
-    <Router>
+    <><Router>
 
-    <Navbar variant="dark" expand="lg" collapseOnSelect className="custom-navbar">
-      <Container>
-        <Navbar.Brand>Gov Assist</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/websites">Official Gov't Websites</Nav.Link>
-            <Nav.Link as={Link} to="/offices">Offices</Nav.Link>
-            <Nav.Link as={Link} to="/guides">Guides</Nav.Link>
-            <Nav.Link as={Link} to="/safety">Safety</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+      <Navbar expand="lg" className="gov-navbar shadow-sm py-3">
+  <Container>
+    <Navbar.Brand as={Link} to="/" className="fw-bold text-white fs-4">
+      GOV ASSIST
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="navbar-nav" className="bg-light" />
+    <Navbar.Collapse id="navbar-nav">
+      <Nav className="ms-auto">
+        <Nav.Link as={Link} to="/" className="nav-link-custom">Home</Nav.Link>
+        <Nav.Link as={Link} to="/websites" className="nav-link-custom">Official Gov’t Websites</Nav.Link>
+        <Nav.Link as={Link} to="/offices" className="nav-link-custom">Offices</Nav.Link>
+        <Nav.Link as={Link} to="/guides" className="nav-link-custom">Guides</Nav.Link>
+        <Nav.Link as={Link} to="/safety" className="nav-link-custom">Safety</Nav.Link>
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
 
-      <Container className="mt-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/websites" element={<Websites />} />
-          <Route path="/offices" element={<Offices />} />
-          <Route path="/guides" element={<Guides />} />
-          <Route path="/safety" element={<Safety />} />
-          <Route path="/safety/emergency" element={<SafetyEmergency />} />
-          <Route path="/safety/scam" element={<SafetyScam />} />
-        </Routes>
-      </Container>
+      <Routes>
+  
+        <Route path="/" element={<Home />} />
+
+        <Route path="/websites" element={<Container className="mt-4"><Websites /></Container>} />
+        <Route path="/offices" element={<Container className="mt-4"><Offices /></Container>} />
+        <Route path="/guides" element={<Container className="mt-4"><Guides /></Container>} />
+        <Route path="/safety" element={<Container className="mt-4"><Safety /></Container>} />
+        <Route path="/safety/emergency" element={<Container className="mt-4"><SafetyEmergency /></Container>} />
+        <Route path="/safety/scam" element={<Container className="mt-4"><SafetyScam /></Container>} />
+    </Routes>
 
     </Router>
-
+    </>
+    
   );
 }
 

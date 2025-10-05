@@ -18,18 +18,21 @@ function App() {
 
     <Router>
 
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="/">Gov Assist</Navbar.Brand>
+    <Navbar variant="dark" expand="lg" collapseOnSelect className="custom-navbar">
+      <Container>
+        <Navbar.Brand>Gov Assist</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/websites">Websites</Nav.Link>
+            <Nav.Link as={Link} to="/websites">Official Gov't Websites</Nav.Link>
             <Nav.Link as={Link} to="/offices">Offices</Nav.Link>
             <Nav.Link as={Link} to="/guides">Guides</Nav.Link>
             <Nav.Link as={Link} to="/safety">Safety</Nav.Link>
           </Nav>
-        </Container>
-      </Navbar>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
 
       <Container className="mt-4">
         <Routes>

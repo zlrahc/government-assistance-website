@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-navbar {
+
+  font-size: large;
+  font-weight: bolder;
+
+  background-color: #004080;
+
+}

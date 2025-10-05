@@ -1,8 +1,8 @@
 function Websites() {
   return (
     <div>
-      <h1>Welcome to the Government Assistance Website</h1>
-      <p>Official Government Websites Directory</p>
+      <h1>OFFICIAL GOVERNMENT WEBSITES DIRECTORY</h1>
+      
     </div>
   );
 }

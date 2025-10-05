@@ -1,8 +1,7 @@
 function Offices() {
   return (
     <div>
-      <h1>Welcome to the Government Assistance Website</h1>
-      <p>Offices</p>
+      <h1>Government Offices</h1>
     </div>
   );
 }

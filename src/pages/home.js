@@ -67,7 +67,7 @@ function Home() {
             </Col>
 
             <Col md={6} lg={3}>
-            <Link to="/safety" className="service-link">
+            <Link to="/safety" className="service-link"></Link>
               <Card className="service-card text-center border-0 shadow-sm">
                 <Card.Img variant="top" src={safety} className="service-icon mx-auto mt-3" />
                 <Card.Body>
@@ -77,7 +77,7 @@ function Home() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </Link>
+            
             </Col>
           </Row>
         </Container>

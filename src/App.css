@@ -110,6 +110,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 15px;
   background-color: #ffffff;
+  min-height: 16rem;
 }
 
 .service-card:hover {

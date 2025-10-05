@@ -13,7 +13,7 @@ function Home() {
     <>
     <div className="hero-section" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="hero-content">
-        <h1 className="hero-title">Welcome to the Gov Assist</h1>
+        <h1 className="hero-title">Welcome to Gov Assist</h1>
         <p className="hero-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br />
           sed do eiusmod tempor incididunt ut labore et dolore <br />
           magna aliqua. Ut enim ad minim veniam, quis nostrud <br /> </p>
@@ -77,7 +77,7 @@ function Home() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            
+          
             </Col>
           </Row>
         </Container>

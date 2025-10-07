@@ -102,8 +102,17 @@
   border-color: #ffffff;
 }
 
+/* Services Section Styles */
+
 .services-section {
-  background-color: #f8f9fa;
+
+  background-color: #ffffff;
+
+}
+
+.service-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .service-card {
@@ -122,4 +131,49 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+#footer {
+
+    background: linear-gradient(90deg, #0073E6 100%, #0052A5 0%);
+
+}
+
+/* Safety Page Styles */
+
+.safety-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.safety-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  background-color: #ffffff;
+
+  min-width: 20rem !important;
+  min-height: 40rem;
+} 
+
+.news-carousel {
+
+ max-height: 40vh;
+ width: 100vw;
+
+  object-fit: cover;
 }

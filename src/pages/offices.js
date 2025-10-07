@@ -1,7 +1,15 @@
+import { Container } from 'react-bootstrap';
+
+
 function Offices() {
   return (
     <div>
-      <h1>Government Offices</h1>
+
+      <Container className="text-center my-5">
+        <h1 className="display-1 fw-bold">DIRECTORY OF PHILIPPINE GOVERNMENT OFFICES</h1>
+      </Container>
+
+
     </div>
   );
 }

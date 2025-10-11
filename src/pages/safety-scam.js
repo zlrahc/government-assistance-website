@@ -1,96 +1,77 @@
-import { Container } from "react-bootstrap";
-import hero from "../assets/hero.png";
-import offices from "../assets/offices.png";
-import guides from "../assets/guides.png";
-
-import '../App.css';
+import { useState } from "react";
+import { Container, Button, Form } from "react-bootstrap";
+import "../App.css";
 
 function SafetyScam() {
+  const [query, setQuery] = useState("");
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleCheck = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResult(null);
+
+    try {
+      const response = await fetch("http://localhost:5000/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        setResult(`❌ Error: ${data.error}`);
+      } else {
+        setResult(
+          `Verdict: ${data.verdict}\nScore: ${data.score}\nReasons:\n- ${data.reasons.join("\n- ")}`
+        );
+      }
+    } catch (err) {
+      setResult("❌ Error connecting to scam checker API");
+    }
+
+    setLoading(false);
+  };
+
   return (
     <div>
-
-      <div id="carouselExample" className="carousel slide w-100 mb-4">
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={hero} class="news-carousel" className="d-block w-100" alt="Hero" />
-          </div>
-          <div className="carousel-item">
-            <img src={offices} className="d-block w-100" alt="Offices" />
-          </div>
-          <div className="carousel-item">
-            <img src={guides} className="d-block w-100" alt="Guides" />
-          </div>
-        </div>
-
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
-
       <Container className="text-center my-5">
         <h1 className="display-1 fw-bold">SCAM PROTECTION</h1>
       </Container>
 
-<Container className="d-flex justify-content-center align-items-center my-5">
-  <form className="p-4 bg-light shadow rounded" style={{ maxWidth: '500px', width: '100%' }}>
-    <h3 className="text-center mb-4">Report</h3>
+      <Container className="d-flex flex-column align-items-center mb-5">
+        <Form
+          onSubmit={handleCheck}
+          className="p-4 bg-light shadow rounded"
+          style={{ maxWidth: "500px", width: "100%" }}
+        >
+          <Form.Control
+            type="text"
+            placeholder="Enter website or phone number"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="mb-3"
+            required
+          />
+          <div className="text-center">
+            <Button type="submit" variant="primary" disabled={loading}>
+              {loading ? "Checking..." : "Check"}
+            </Button>
+          </div>
+        </Form>
 
-    <input 
-      type="text" 
-      name="data[name]" 
-      placeholder="Full Name" 
-      className="form-control mb-3" 
-      required 
-    />
-
-    <input 
-      type="email" 
-      name="data[email]" 
-      placeholder="Email Address" 
-      className="form-control mb-3" 
-      required 
-    />
-
-    <input 
-      type="text" 
-      name="data[number]" 
-      placeholder="Contact Number" 
-      className="form-control mb-3" 
-      required 
-    />
-
-    <textarea 
-      name="data[message]" 
-      rows="4" 
-      placeholder="Your Message" 
-      className="form-control mb-3" 
-      required 
-    ></textarea>
-
-    <div className="text-center">
-      <button type="submit" className="btn btn-primary px-5">
-        Submit
-      </button>
-    </div>
-  </form>
-</Container>
-
-
+        {result && (
+          <div
+            className="mt-4 p-3 rounded shadow-sm bg-white text-start"
+            style={{ whiteSpace: "pre-line" }}
+          >
+            <h5>Result:</h5>
+            <p className="fs-6">{result}</p>
+          </div>
+        )}
+      </Container>
     </div>
   );
 }

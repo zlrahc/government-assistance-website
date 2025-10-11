@@ -1,93 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Button, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import backgroundImage from '../assets/hero.png';
+
 import '../App.css';
-import websites from "../assets/websites.png";
-import offices from "../assets/offices.png";
-import guides from "../assets/guides.png";
-import safety from "../assets/safety.png";
+
+import defaultHero from "../assets/home-hero-img/default-hero.png";
+import websitesHero from "../assets/home-hero-img/websites-hero.png";
+import officesHero from "../assets/home-hero-img/offices-hero.png";
+import guidesHero from "../assets/home-hero-img/guides-hero.png";
+import safetyHero from "../assets/home-hero-img/safety-hero.png";
+
+import websitesIcon from "../assets/icons/websites.png";
+import officesIcon from "../assets//icons/offices.png";
+import guidesIcon from "../assets//icons/guides.png";
+import safetyIcon from "../assets//icons/safety.png";
 
 function Home() {
+  const [heroBg, setHeroBg] = useState(defaultHero);
+
+  const services = [
+    { id: 1, title: "Official Websites", img: websitesIcon, hero: websitesHero, link: "/websites", desc: "Access verified government portals and official online resources." },
+    { id: 2, title: "Government Offices", img: officesIcon, hero: officesHero, link: "/offices", desc: "Find contact information and locations of key government agencies." },
+    { id: 3, title: "Guides", img: guidesIcon, hero: guidesHero, link: "/guides", desc: "Step-by-step guides to help you process documents easily and efficiently." },
+    { id: 4, title: "Safety & Awareness", img: safetyIcon, hero: safetyHero, link: "/safety", desc: "Learn about safety protocols, emergency contacts, and scam prevention tips." },
+  ];
+
   return (
     <>
-      <div className="hero-section" style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div
+        className="hero-section"
+        style={{ backgroundImage: `linear-gradient(rgba(0, 123, 255, 0.4), rgba(0, 123, 255, 0.4)), url(${heroBg})`}}
+      >
         <div className="hero-content">
           <h1 className="hero-title">Welcome to Gov Assist</h1>
-          <p className="hero-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br />
+          <p className="hero-subtitle">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br />
             sed do eiusmod tempor incididunt ut labore et dolore <br />
-            magna aliqua. Ut enim ad minim veniam, quis nostrud <br /> </p>
+            magna aliqua. Ut enim ad minim veniam, quis nostrud <br />
+          </p>
           <Button className="hero-button" variant="primary" size="lg" href="#footer">Learn More</Button>
         </div>
       </div>
-      
+
       <div className="services-section py-5">
         <Container>
           <center><h1 className="fw-bold mb-5">Services</h1></center>
           <Row className="g-4">
-            <Col md={6} lg={3}>
-              <Link to="/websites" className="service-link">
-                <Card className="service-card text-center border-0">
-                  <Card.Img variant="top" src={websites} className="service-icon mx-auto mt-3" />
-                  <Card.Body>
-                    <Card.Title>Official Websites</Card.Title>
-                    <Card.Text>
-                      Access verified government portals and official online resources.<br/>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-
-            <Col md={6} lg={3}>
-              <Link to="/offices" className="service-link">
-                <Card className="service-card text-center border-0">
-                  <Card.Img variant="top" src={offices} className="service-icon mx-auto mt-3" />
-                  <Card.Body>
-                    <Card.Title>Government Offices</Card.Title>
-                    <Card.Text>
-                      Find contact information and locations of key government agencies.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-
-            <Col md={6} lg={3}>
-              <Link to="/guides" className="service-link">
-                <Card className="service-card text-center border-0">
-                  <Card.Img variant="top" src={guides} className="service-icon mx-auto mt-3" />
-                  <Card.Body>
-                    <Card.Title>Guides</Card.Title>
-                    <Card.Text>
-                      Step-by-step guides to help you process documents easily and efficiently.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-
-            <Col md={6} lg={3}>
-              <Link to="/safety" className="service-link">
-              <Card className="service-card text-center border-0">
-                <Card.Img variant="top" src={safety} className="service-icon mx-auto mt-3" />
-                <Card.Body>
-                  <Card.Title>Safety & Awareness</Card.Title>
-                  <Card.Text>
-                    Learn about safety protocols, emergency contacts, and scam prevention tips.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              </Link>
-            </Col>
+            {services.map(service => (
+              <Col key={service.id} md={6} lg={3}>
+                <Link to={service.link} className="service-link">
+                  <Card
+                    className="service-card text-center border-0"
+                    onMouseEnter={() => setHeroBg(service.hero)}
+                    onMouseLeave={() => setHeroBg(defaultHero)}
+                  >
+                    <Card.Img variant="top" src={service.img} className="service-icon mx-auto mt-3" />
+                    <Card.Body>
+                      <Card.Title>{service.title}</Card.Title>
+                      <Card.Text>{service.desc}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
+            ))}
           </Row>
         </Container>
       </div>
-
-     
-
-
-
     </>
   );
 }

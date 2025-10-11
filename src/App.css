@@ -1,3 +1,4 @@
+/* App Styles */
 .App {
   text-align: center;
 }
@@ -37,42 +38,36 @@
   }
 }
 
-.custom-navbar {
+.main-content {
+  
+}
 
+/* Layout */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  background-color: #fdfdfd;
+}
+
+#footer {
+  background: linear-gradient(90deg, #0073E6 100%, #0052A5 0%);
+}
+
+/* Navbar Styles */
+.custom-navbar {
   font-size: large;
   font-weight: bolder;
-
   background-color: #004080;
-
-}
-
-.hero-section {
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 500px;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: #ffffff;
-}
-
-.hero-content {
-  padding-left: 100px;
-}
-
-.hero-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
 }
 
 .gov-navbar {
@@ -102,13 +97,38 @@
   border-color: #ffffff;
 }
 
-/* Services Section Styles */
+/* Hero Section */
+.hero-section {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #ffffff;
+}
 
+.hero-content {
+  padding-left: 100px;
+}
 
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Services Section */
 .services-section {
-
-  background-color: #ffffff;
-
+  background-color: #fdfdfd;
 }
 
 .service-link {
@@ -117,16 +137,16 @@
 }
 
 .service-card {
+  background-color: #f7f7f700 !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 0 6px 20px #dfe1e2;
-  min-height: 16rem;
+  min-height: 18rem;
 }
 
 .service-card:hover {
+  background-color: #ffffff !important;
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px #0052A5;
+  box-shadow: 0 10px 25px #6e6e6e67;
 }
 
 .service-icon {
@@ -135,29 +155,8 @@
   object-fit: contain;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
-}
-
-#footer {
-
-    background: linear-gradient(90deg, #0073E6 100%, #0052A5 0%);
-
-}
-
-/* Safety Page Styles */
-
+/* Safety Page */
 .safety-link {
   text-decoration: none;
   color: inherit;
@@ -167,23 +166,18 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 15px;
   background-color: #ffffff;
-  box-shadow: 0 6px 20px #0073E6;
   min-width: 20rem !important;
-  min-height: 40rem;
+  min-height: 30rem;
 }
 
 .safety-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px #0052A5;
+  box-shadow: 0 10px 25px #6e6e6e67;
 }
 
-
-
-
+/* News Carousel */
 .news-carousel {
-
- max-height: 30vh;
- width: 100vw;
-
+  max-height: 30vh;
+  width: 100vw;
   object-fit: cover;
 }

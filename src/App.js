@@ -10,8 +10,8 @@ import Websites from "./pages/websites";
 import Offices from "./pages/offices";
 import Guides from "./pages/guides";
 import Safety from "./pages/safety";
-import SafetyEmergency from "./pages/safety-emergency";
-import SafetyScam from "./pages/safety-scam";
+  import SafetyEmergency from "./pages/safety-emergency";
+  import SafetyScam from "./pages/safety-scam";
 
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
           </Container>
         </Navbar>
 
-        <main>
+        <main className='main-content'>
           <Routes>
 
             <Route path="/" element={<Home />} />

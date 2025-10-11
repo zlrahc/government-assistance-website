@@ -172,7 +172,7 @@ main {
 
 .news-carousel {
 
- max-height: 40vh;
+ max-height: 30vh;
  width: 100vw;
 
   object-fit: cover;

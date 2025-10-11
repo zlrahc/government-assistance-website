@@ -27,12 +27,12 @@ function Home() {
           <Row className="g-4">
             <Col md={6} lg={3}>
               <Link to="/websites" className="service-link">
-                <Card className="service-card text-center border-0 shadow-sm">
+                <Card className="service-card text-center border-0">
                   <Card.Img variant="top" src={websites} className="service-icon mx-auto mt-3" />
                   <Card.Body>
                     <Card.Title>Official Websites</Card.Title>
                     <Card.Text>
-                      Access verified government portals and official online resources.
+                      Access verified government portals and official online resources.<br/>
                     </Card.Text>
                   </Card.Body>
                 </Card>
@@ -41,7 +41,7 @@ function Home() {
 
             <Col md={6} lg={3}>
               <Link to="/offices" className="service-link">
-                <Card className="service-card text-center border-0 shadow-sm">
+                <Card className="service-card text-center border-0">
                   <Card.Img variant="top" src={offices} className="service-icon mx-auto mt-3" />
                   <Card.Body>
                     <Card.Title>Government Offices</Card.Title>
@@ -55,7 +55,7 @@ function Home() {
 
             <Col md={6} lg={3}>
               <Link to="/guides" className="service-link">
-                <Card className="service-card text-center border-0 shadow-sm">
+                <Card className="service-card text-center border-0">
                   <Card.Img variant="top" src={guides} className="service-icon mx-auto mt-3" />
                   <Card.Body>
                     <Card.Title>Guides</Card.Title>
@@ -69,7 +69,7 @@ function Home() {
 
             <Col md={6} lg={3}>
               <Link to="/safety" className="service-link">
-              <Card className="service-card text-center border-0 shadow-sm">
+              <Card className="service-card text-center border-0">
                 <Card.Img variant="top" src={safety} className="service-icon mx-auto mt-3" />
                 <Card.Body>
                   <Card.Title>Safety & Awareness</Card.Title>

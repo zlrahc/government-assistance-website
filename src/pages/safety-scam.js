@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { Container, Button, Form, Collapse, Card, Modal } from "react-bootstrap";
-=======
-import { useState } from "react";
-import { Container, Button, Collapse, Card } from "react-bootstrap";
->>>>>>> 2ac3738d6f014cd2cc4911315ea468178249212b
 import "../App.css";
 
 function SafetyScam() {
@@ -27,26 +22,18 @@ function SafetyScam() {
     setOpen(false);
 
     try {
-      const response = await fetch("http://localhost:5000/check", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      });
+  const response = await fetch("http://localhost:5000/check", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query }),
+  });
 
-      const data = await response.json();
-<<<<<<< HEAD
-      setResult(data.error ? { verdict: `❌ Error: ${data.error}` } : data);
-    } catch {
-=======
-      if (data.error) {
-        setResult({ verdict: `❌ Error: ${data.error}` });
-      } else {
-        setResult(data);
-      }
-    } catch (err) {
->>>>>>> 2ac3738d6f014cd2cc4911315ea468178249212b
-      setResult({ verdict: "❌ Error connecting to scam checker API" });
-    }
+  const data = await response.json();
+  setResult(data.error ? { verdict: `❌ Error: ${data.error}` } : data);
+} catch (err) {
+  setResult({ verdict: "❌ Error connecting to scam checker API" });
+}
+
 
     setLoading(false);
   };
@@ -117,7 +104,6 @@ function SafetyScam() {
           How to use the Scam Checker?
         </Button>
       </Container>
-<<<<<<< HEAD
 
       {/* Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>
@@ -138,9 +124,7 @@ function SafetyScam() {
       </Modal>
 
       {/* Checker Section */}
-=======
       
->>>>>>> 2ac3738d6f014cd2cc4911315ea468178249212b
       <Container className="d-flex flex-column align-items-center mb-5">
         <form
           className="w-100 d-flex"
@@ -173,12 +157,9 @@ function SafetyScam() {
 
         {/* Results */}
         {result && (
-<<<<<<< HEAD
           <div className="mt-4" style={{ maxWidth: "500px", width: "100%" }}>
-=======
-          <div className="mt-4" style={{ maxWidth: "600px", width: "100%" }}>
 
->>>>>>> 2ac3738d6f014cd2cc4911315ea468178249212b
+
             <Card className="p-3 mb-2">
               <h5>{getFriendlyVerdict(result)}</h5>
               {result.type && (result.reasons?.length > 0 || result.vt || result.details) && (
@@ -199,7 +180,6 @@ function SafetyScam() {
                   {/* URL Details */}
                   {result.type === "url" && (
                     <>
-<<<<<<< HEAD
                       <p>
                         <strong>Domain:</strong> {result.domain}
                       </p>
@@ -214,8 +194,6 @@ function SafetyScam() {
                           <li key={idx}>{r}</li>
                         ))}
                       </ul>
-=======
-                      <p><strong>Domain:</strong> {result.domain}</p>
 
                       {result.reasons?.length > 0 && (
                         <>
@@ -241,7 +219,6 @@ function SafetyScam() {
                           <pre>{JSON.stringify(result.vt, null, 2)}</pre>
                         </details>
                       )}
->>>>>>> 2ac3738d6f014cd2cc4911315ea468178249212b
                     </>
                   )}
 
@@ -277,7 +254,6 @@ function SafetyScam() {
           </div>
         )}
 
-<<<<<<< HEAD
         {/* Report Section */}
 <div
   style={{
@@ -297,7 +273,7 @@ function SafetyScam() {
 
 <div style={{ width: "100%", maxWidth: "600px", marginTop: "3rem" }}>
   <Card className="p-4 safety-report-card">
-    <h4 className="mb-3">Report a Scam</h4>
+    <h4 className="mb-3">Report Details</h4>
 
     <form
       id="sheetdb-form"
@@ -355,7 +331,7 @@ function SafetyScam() {
       </div>
 
       <div className="mb-3 text-start">
-        <label className="form-label fw-semibold">Describe the Scam</label>
+        <label className="form-label fw-semibold">Describe the incident</label>
         <textarea
           name="data[Details]"
           rows="4"
@@ -374,9 +350,6 @@ function SafetyScam() {
   </Card>
 </div>
 
-
-=======
->>>>>>> 2ac3738d6f014cd2cc4911315ea468178249212b
       </Container>
     </div>
   );

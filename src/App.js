@@ -29,7 +29,7 @@ function App() {
             <Navbar.Collapse id="navbar-nav">
               <Nav className="ms-auto">
                 <Nav.Link as={Link} to="/" className="nav-link-custom">Home</Nav.Link>
-                <Nav.Link as={Link} to="/websites" className="nav-link-custom">Official Gov’t Websites</Nav.Link>
+                <Nav.Link as={Link} to="/websites" className="nav-link-custom">Official Websites</Nav.Link>
                 <Nav.Link as={Link} to="/offices" className="nav-link-custom">Offices</Nav.Link>
                 <Nav.Link as={Link} to="/guides" className="nav-link-custom">Guides</Nav.Link>
                 <Nav.Link as={Link} to="/safety" className="nav-link-custom">Safety</Nav.Link>

@@ -19,7 +19,7 @@ function Home() {
   const [heroBg, setHeroBg] = useState(defaultHero);
 
   const services = [
-    { id: 1, title: "Official Websites", img: websitesIcon, hero: websitesHero, link: "/websites", desc: "Access verified government portals and official online resources." },
+    { id: 1, title: "Official Websites", img: websitesIcon, hero: websitesHero, link: "/websites", desc: "Access verified government portals and official online resources to ensure safety and reliability." },
     { id: 2, title: "Government Offices", img: officesIcon, hero: officesHero, link: "/offices", desc: "Find contact information and locations of key government agencies." },
     { id: 3, title: "Guides", img: guidesIcon, hero: guidesHero, link: "/guides", desc: "Step-by-step guides to help you process documents easily and efficiently." },
     { id: 4, title: "Safety & Awareness", img: safetyIcon, hero: safetyHero, link: "/safety", desc: "Learn about safety protocols, emergency contacts, and scam prevention tips." },
@@ -34,10 +34,10 @@ function Home() {
         <div className="hero-content">
           <h1 className="hero-title">Welcome to Gov Assist</h1>
           <p className="hero-subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br />
-            sed do eiusmod tempor incididunt ut labore et dolore <br />
-            magna aliqua. Ut enim ad minim veniam, quis nostrud <br />
-          </p>
+            Your one-stop platform for accessing official government  <br />
+            websites and services in the Philippines. Stay informed,  <br />
+            complete transactions online, and get the help you need—all  <br />
+            in one convenient place. </p>
           <Button className="hero-button" variant="primary" size="lg" href="#footer">Learn More</Button>
         </div>
       </div>

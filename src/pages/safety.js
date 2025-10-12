@@ -14,9 +14,7 @@ function Safety() {
       img: emergencyIcon,
       link: "/safety-emergency",
       description: `
-        Access real-time updates on evacuation centers  
-        and relief operations, along with a complete 
-        directory of official emergency hotlines.
+        A complete directory of official emergency hotlines.
       `,
     },
     {
@@ -25,10 +23,10 @@ function Safety() {
       img: safetyIcon,
       link: "/safety-scam",
       description: `
-        Stay informed with the latest scam advisories and alerts
-        on ongoing fraudulent activities. Use the built-in 
-        verification tool to check websites or contact numbers
-        and easily report suspicious scams to help protect others in the community.
+        A verification tool to check websites or contact numbers 
+        and easily report suspicious scams to help protect 
+        others in the community.
+        
       `,
     },
   ];
@@ -36,7 +34,8 @@ function Safety() {
   return (
     <div>
       <Container className="text-center my-5">
-        <h1 className="display-1 fw-bold">SAFETY...</h1>
+        <h1 className="display-1 fw-bold">SAFETY</h1>
+        <hr/>
       </Container>
 
       <div className="safety-section py-5">
@@ -45,7 +44,7 @@ function Safety() {
             {safetyCards.map(card => (
               <Col key={card.id} md={6} lg={5}>
                 <Link to={card.link} className="safety-link">
-                  <Card className="safety-card text-center border-0">
+                  <Card className="safety-card text-center border-0"><br/>
                     <Card.Img variant="top" src={card.img} className="safety-icon mx-auto mt-3" />
                     <Card.Body>
                       <Card.Title className="display-6 fw-bold">{card.title}</Card.Title>

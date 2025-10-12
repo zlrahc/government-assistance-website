@@ -92,18 +92,35 @@ function SafetyScam() {
     <div>
       {/* Top Header */}
       <div className={`top-header ${fadeIn ? "fade-in" : ""}`}>
-        <h1 className="fw-bold"> SCAM PROTECTION</h1>
+        <h1 className="fw-bold"> SCAM PROTECTION</h1> <hr/>
       </div>
 
-      <Container className={`text-center my-5 fade-section ${fadeIn ? "fade-in" : ""}`}>
+      <div
+        style={{
+          width: "100%",
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",  
+        }}
+    >
+        <h3 style={{ fontWeight: "700", color: "#003366"}}>Scam Check</h3>
+        <p style={{ color: "#555", fontSize: "15px" }}>
+          Use this tool to verify any suspicious website, message, or phone number before interacting
+        </p>
+      </div>
+
+      <Container className={`text-center my-3 fade-section ${fadeIn ? "fade-in" : ""}`}>
         <Button
           variant="outline-primary"
-          className="mt-3"
+          className="mt-0"
           onClick={() => setShowModal(true)}
         >
           How to use the Scam Checker?
         </Button>
       </Container>
+
+
 
       {/* Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>
@@ -112,9 +129,9 @@ function SafetyScam() {
         </Modal.Header>
         <Modal.Body>
           <p>
-            Use this tool to verify any suspicious website, message, or phone number before interacting.
+              Enter a website or phone number that you’re unsure of to check if it might be suspicious or unsafe.
           </p>
-          <p>Protect yourself and others by staying informed and vigilant.</p>
+          <p>Stay alert and help protect yourself and others from scams by verifying before you trust.</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>

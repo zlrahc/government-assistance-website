@@ -36,8 +36,8 @@ function Home() {
           <p className="hero-subtitle">
             Your one-stop platform for accessing official government  <br />
             websites and services in the Philippines. Stay informed,  <br />
-            complete transactions online, and get the help you need—all  <br />
-            in one convenient place. </p>
+            complete transactions online, and get the help you need  <br />
+            —all in one convenient place. </p>
           <Button className="hero-button" variant="primary" size="lg" href="#footer">Learn More</Button>
         </div>
       </div>

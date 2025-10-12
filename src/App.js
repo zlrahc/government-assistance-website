@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import { Button, Row, Col, Card } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import './App.css';
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -10,8 +9,8 @@ import Websites from "./pages/websites";
 import Offices from "./pages/offices";
 import Guides from "./pages/guides";
 import Safety from "./pages/safety";
-  import SafetyEmergency from "./pages/safety-emergency";
-  import SafetyScam from "./pages/safety-scam";
+import SafetyEmergency from "./pages/safety-emergency";
+import SafetyScam from "./pages/safety-scam";
 
 
 function App() {
@@ -44,53 +43,52 @@ function App() {
 
             <Route path="/" element={<Home />} />
 
-            <Route path="/websites" element={<Websites/>}/>
+            <Route path="/websites" element={<Websites />} />
             <Route path="/offices" element={<Offices />} />
             <Route path="/guides" element={<Guides />} />
             <Route path="/safety" element={<Safety />} />
             <Route path="/safety-emergency" element={<SafetyEmergency />} />
             <Route path="/safety-scam" element={<SafetyScam />} />
-            
+
           </Routes>
         </main>
 
-        <footer className="py-5  text-white" id="footer" >
+        <footer className="py-5 text-white" id="footer">
           <Container>
             <Row>
-
+              {/* Quick Links */}
               <Col xs={6} md={2} className="mb-3">
-                <h5>Section</h5>
+                <h5>Quick Links</h5>
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2"><Link to="/" className="nav-link p-0 text-body-secondary">Home</Link></li>
-                  <li className="nav-item mb-2"><Link to="/features" className="nav-link p-0 text-body-secondary">Features</Link></li>
-                  <li className="nav-item mb-2"><Link to="/pricing" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
-                  <li className="nav-item mb-2"><Link to="/faqs" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
-                  <li className="nav-item mb-2"><Link to="/about" className="nav-link p-0 text-body-secondary">About</Link></li>
+                  <li className="nav-item mb-2"><Link to="/websites" className="nav-link p-0 text-body-secondary">Official Websites</Link></li>
+                  <li className="nav-item mb-2"><Link to="/offices" className="nav-link p-0 text-body-secondary">Offices</Link></li>
+                  <li className="nav-item mb-2"><Link to="/guides" className="nav-link p-0 text-body-secondary">Guides</Link></li>
+                  <li className="nav-item mb-2"><Link to="/safety" className="nav-link p-0 text-body-secondary">Safety</Link></li>
                 </ul>
               </Col>
 
+              {/* Resources */}
               <Col xs={6} md={2} className="mb-3">
-                <h5>Section</h5>
+                <h5>Resources</h5>
                 <ul className="nav flex-column">
-                  <li className="nav-item mb-2"><Link to="/" className="nav-link p-0 text-body-secondary">Home</Link></li>
-                  <li className="nav-item mb-2"><Link to="/features" className="nav-link p-0 text-body-secondary">Features</Link></li>
-                  <li className="nav-item mb-2"><Link to="/pricing" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
-                  <li className="nav-item mb-2"><Link to="/faqs" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
-                  <li className="nav-item mb-2"><Link to="/about" className="nav-link p-0 text-body-secondary">About</Link></li>
+                  <li className="nav-item mb-2"><Link to="/faq" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
+                  <li className="nav-item mb-2"><Link to="/guidelines" className="nav-link p-0 text-body-secondary">Guidelines</Link></li>
+                  <li className="nav-item mb-2"><Link to="/support" className="nav-link p-0 text-body-secondary">Support</Link></li>
                 </ul>
               </Col>
 
+              {/* About */}
               <Col xs={6} md={2} className="mb-3">
-                <h5>Section</h5>
+                <h5>About</h5>
                 <ul className="nav flex-column">
-                  <li className="nav-item mb-2"><Link to="/" className="nav-link p-0 text-body-secondary">Home</Link></li>
-                  <li className="nav-item mb-2"><Link to="/features" className="nav-link p-0 text-body-secondary">Features</Link></li>
-                  <li className="nav-item mb-2"><Link to="/pricing" className="nav-link p-0 text-body-secondary">Pricing</Link></li>
-                  <li className="nav-item mb-2"><Link to="/faqs" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
-                  <li className="nav-item mb-2"><Link to="/about" className="nav-link p-0 text-body-secondary">About</Link></li>
+                  <li className="nav-item mb-2"><Link to="/about" className="nav-link p-0 text-body-secondary">Our Team</Link></li>
+                  <li className="nav-item mb-2"><Link to="/privacy" className="nav-link p-0 text-body-secondary">Privacy Policy</Link></li>
+                  <li className="nav-item mb-2"><Link to="/terms" className="nav-link p-0 text-body-secondary">Terms & Conditions</Link></li>
                 </ul>
               </Col>
 
+              {/* Newsletter */}
               <Col md={5} className="offset-md-1 mb-3">
                 <form>
                   <h5>Subscribe to our newsletter</h5>
@@ -104,18 +102,18 @@ function App() {
               </Col>
             </Row>
 
-
+            {/* Bottom Bar */}
             <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-              <p>© 2025 Company, Inc. All rights reserved.</p>
+              <p>© 2025 Gov Assist. All rights reserved.</p>
               <ul className="list-unstyled d-flex">
                 <li className="ms-3">
                   <a className="link-body-emphasis" href="#" aria-label="Instagram">
-
+                    <i className="bi bi-instagram"></i>
                   </a>
                 </li>
                 <li className="ms-3">
                   <a className="link-body-emphasis" href="#" aria-label="Facebook">
-
+                    <i className="bi bi-facebook"></i>
                   </a>
                 </li>
               </ul>
@@ -123,7 +121,8 @@ function App() {
           </Container>
         </footer>
 
-      </Router> 
+
+      </Router>
 
     </>
 

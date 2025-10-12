@@ -181,3 +181,10 @@ main {
   width: 100vw;
   object-fit: cover;
 }
+
+
+/**/
+
+.form-control {
+  border: none;
+}

@@ -20,7 +20,7 @@ function App() {
 
       <Router>
 
-        <Navbar expand="lg" className="gov-navbar shadow-sm py-3">
+        <Navbar expand="lg" className="gov-navbar shadow-sm py-3 sticky-top">
           <Container>
             <Navbar.Brand as={Link} to="/" className="fw-bold text-white fs-4">
               GOV ASSIST

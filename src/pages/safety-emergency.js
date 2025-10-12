@@ -9,7 +9,7 @@ function SafetyEmergency() {
       <Container>
         {/* Header / Banner */}
         <div className="text-center mb-5">
-          <h1 className="fw-bold text-black">Emergency Hotlines</h1> <hr/>
+          <h1 className="fw-bold text-black">EMERGENCY HOTLINES</h1> <hr/>
           <p className="text-secondary">
             Important contact numbers for emergencies, disasters, and public safety.
           </p>

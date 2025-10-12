@@ -147,9 +147,21 @@ const serviceCards = [
 
   return (
     <>
+
+    <Container className="text-center my-5">
+        <hr />
+        <h1 className="fw-bold">OFFICIAL SERVICES WEBSITES</h1>
+      </Container>
+
+      <div className="services-section py-5">
+        <Container>
+          {renderCards(serviceCards)}
+        </Container>
+      </div>
+      
       <Container className="text-center my-5">
         <hr />
-        <h3 className="display-1 fw-bold">OFFICIAL GOVERNMENT WEBSITES</h3>
+        <h1 className="fw-bold">OFFICIAL GOVERNMENT WEBSITES</h1>
       </Container>
 
       <div className="services-section py-5">
@@ -158,16 +170,7 @@ const serviceCards = [
         </Container>
       </div>
 
-      <Container className="text-center my-5">
-        <hr />
-        <h3 className="display-1 fw-bold">OFFICIAL SERVICES WEBSITES</h3>
-      </Container>
-
-      <div className="services-section py-5">
-        <Container>
-          {renderCards(serviceCards)}
-        </Container>
-      </div>
+      
     </>
   );
 }

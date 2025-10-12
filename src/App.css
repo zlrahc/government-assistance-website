@@ -199,6 +199,7 @@ main {
   object-fit: cover;
 }
 
+<<<<<<< HEAD
 .safety-report-card {
   border-radius: 12px;
   background-color: #ffffff;
@@ -273,3 +274,11 @@ div[style*="text-align: center"] {
 }
 
 
+=======
+
+/**/
+
+.form-control {
+  border: none;
+}
+>>>>>>> 2ac3738d6f014cd2cc4911315ea468178249212b

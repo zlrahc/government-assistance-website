@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Container, Button, Form, Collapse, Card } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Container, Button, Form, Collapse, Card, Modal } from "react-bootstrap";
 import "../App.css";
 
 function SafetyScam() {
@@ -7,6 +7,13 @@ function SafetyScam() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setFadeIn(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCheck = async (e) => {
     e.preventDefault();
@@ -22,13 +29,8 @@ function SafetyScam() {
       });
 
       const data = await response.json();
-
-      if (data.error) {
-        setResult({ verdict: `❌ Error: ${data.error}` });
-      } else {
-        setResult(data);
-      }
-    } catch (err) {
+      setResult(data.error ? { verdict: `❌ Error: ${data.error}` } : data);
+    } catch {
       setResult({ verdict: "❌ Error connecting to scam checker API" });
     }
 
@@ -37,10 +39,40 @@ function SafetyScam() {
 
   return (
     <div>
-      <Container className="text-center my-5">
-        <h1 className="display-1 fw-bold">SCAM PROTECTION</h1>
+      {/* Top Header */}
+      <div className={`top-header ${fadeIn ? "fade-in" : ""}`}>
+        <h1 className="fw-bold"> SCAM PROTECTION</h1>
+      </div>
+
+      <Container className={`text-center my-5 fade-section ${fadeIn ? "fade-in" : ""}`}>
+        <Button
+          variant="outline-primary"
+          className="mt-3"
+          onClick={() => setShowModal(true)}
+        >
+          How to use the Scam Checker?
+        </Button>
       </Container>
 
+      {/* Modal */}
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>🛡️ Stay Alert, Stay Safe</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Use this tool to verify any suspicious website, message, or phone number before interacting.
+          </p>
+          <p>Protect yourself and others by staying informed and vigilant.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Checker Section */}
       <Container className="d-flex flex-column align-items-center mb-5">
         <Form
           onSubmit={handleCheck}
@@ -64,7 +96,6 @@ function SafetyScam() {
 
         {result && (
           <div className="mt-4" style={{ maxWidth: "500px", width: "100%" }}>
-            {/* Simple verdict */}
             <Card className="p-3 mb-2">
               <h5>{result.verdict}</h5>
               {result.type && (
@@ -79,26 +110,25 @@ function SafetyScam() {
               )}
             </Card>
 
-            {/* Collapsible full details */}
             <Collapse in={open}>
               <div id="detailed-result">
                 <Card className="p-3 bg-white shadow-sm">
                   {result.type === "url" && (
                     <>
-                      <p><strong>Domain:</strong> {result.domain}</p>
-                      <p><strong>Score:</strong> {result.score}</p>
-                      <p><strong>Reasons:</strong></p>
+                      <p>
+                        <strong>Domain:</strong> {result.domain}
+                      </p>
+                      <p>
+                        <strong>Score:</strong> {result.score}
+                      </p>
+                      <p>
+                        <strong>Reasons:</strong>
+                      </p>
                       <ul>
                         {result.reasons.map((r, idx) => (
                           <li key={idx}>{r}</li>
                         ))}
                       </ul>
-                      {result.vt && (
-                        <details>
-                          <summary>VirusTotal Raw Data</summary>
-                          <pre>{JSON.stringify(result.vt, null, 2)}</pre>
-                        </details>
-                      )}
                     </>
                   )}
                   {result.type === "phone" && (
@@ -109,6 +139,104 @@ function SafetyScam() {
             </Collapse>
           </div>
         )}
+
+        {/* Report Section */}
+<div
+  style={{
+    width: "100%",
+    maxWidth: "600px",
+    marginTop: "4rem",
+    marginBottom: "1.5rem",
+    textAlign: "center",
+  }}
+>
+  <hr style={{ border: "none", borderTop: "2px solid #ccc" }} />
+  <h3 style={{ fontWeight: "700", color: "#003366" }}>Report a Scam?</h3>
+  <p style={{ color: "#555", fontSize: "15px" }}>
+    If you encountered a suspicious website or number, you can report it below.
+  </p>
+</div>
+
+<div style={{ width: "100%", maxWidth: "600px", marginTop: "3rem" }}>
+  <Card className="p-4 safety-report-card">
+    <h4 className="mb-3">Report a Scam</h4>
+
+    <form
+      id="sheetdb-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = new FormData(form);
+
+        fetch("https://sheetdb.io/api/v1/fqstfncx2ctku", {
+          method: "POST",
+          body: data,
+        })
+          .then((response) => response.json())
+          .then(() => {
+            alert("Thank you! Your report has been submitted successfully.");
+            form.reset();
+          })
+          .catch(() => {
+            alert("Something went wrong. Please try again.");
+          });
+      }}
+    >
+      <div className="mb-3 text-start">
+        <label className="form-label fw-semibold">Your Name</label>
+        <input
+          type="text"
+          name="data[Name]"
+          className="form-control"
+          placeholder="Enter your full name"
+          required
+        />
+      </div>
+
+      <div className="mb-3 text-start">
+        <label className="form-label fw-semibold">Email</label>
+        <input
+          type="email"
+          name="data[Email]"
+          className="form-control"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <div className="mb-3 text-start">
+        <label className="form-label fw-semibold">Website or Phone Number</label>
+        <input
+          type="text"
+          name="data[ScamSource]"
+          className="form-control"
+          placeholder="https://example.com or +639XXXXXXXXX"
+          required
+        />
+      </div>
+
+      <div className="mb-3 text-start">
+        <label className="form-label fw-semibold">Describe the Scam</label>
+        <textarea
+          name="data[Details]"
+          rows="4"
+          className="form-control"
+          placeholder="Provide details about the suspicious activity"
+          required
+        ></textarea>
+      </div>
+
+      <div className="text-end">
+        <Button type="submit" variant="primary">
+          Submit Report
+        </Button>
+      </div>
+    </form>
+  </Card>
+</div>
+
+
       </Container>
     </div>
   );

@@ -46,7 +46,7 @@ function Safety() {
               <Col key={card.id} md={6} lg={5}>
                 <Link to={card.link} className="safety-link">
                   <Card className="safety-card text-center border-0">
-                    <Card.Img variant="top" src={card.img} className="service-icon mx-auto mt-3" />
+                    <Card.Img variant="top" src={card.img} className="safety-icon mx-auto mt-3" />
                     <Card.Body>
                       <Card.Title className="display-6 fw-bold">{card.title}</Card.Title>
                       <Card.Text style={{ whiteSpace: 'pre-line' }}>

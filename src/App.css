@@ -137,22 +137,37 @@ main {
 }
 
 .service-card {
-  background-color: #f7f7f700 !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 15px;
-  min-height: 18rem;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 25px 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: none;
+  min-height: 15rem;
 }
 
 .service-card:hover {
-  background-color: #ffffff !important;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px #6e6e6e67;
+  transform: translateY(-4px);
+  border-color: #0073E6; /* highlight border color on hover */
+  box-shadow: 0 4px 12px rgba(0, 115, 230, 0.1);
+  background-color: #f9f9f9;
 }
 
-.service-icon {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
+.service-card .service-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.service-card .card-title {
+  font-weight: 700;
+  color: #002B5B;
+  font-size: 1.1rem;
+}
+
+.service-card .card-text {
+  font-size: 0.95rem;
+  color: #444;
 }
 
 
@@ -162,17 +177,19 @@ main {
   color: inherit;
 }
 
+
 .safety-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 15px;
   background-color: #ffffff;
+  box-shadow: 0 6px 20px #0073E6;
   min-width: 20rem !important;
   min-height: 30rem;
 }
 
 .safety-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px #6e6e6e67;
+   box-shadow: 0 10px 25px #0052A5
 }
 
 /* News Carousel */
@@ -181,3 +198,78 @@ main {
   width: 100vw;
   object-fit: cover;
 }
+
+.safety-report-card {
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.1);
+}
+
+.safety-report-card .form-control,
+.safety-report-card .form-select {
+  min-height: 42px;
+}
+
+.safety-report-card h4 {
+  font-weight: 700;
+  color: #003366;
+}
+
+hr {
+  border-top: 2px solid #ddd;
+}
+
+.safety-report-card {
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.1);
+  padding: 1.5rem;
+}
+
+.safety-report-card h4 {
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 1rem;
+}
+
+div[style*="text-align: center"] {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Scam Protection Fade-In and Header Styling === */
+.top-header {
+  background: transparent;
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+
+.top-header.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1s ease;
+}
+
+.fade-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.top-header h1 {
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+

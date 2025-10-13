@@ -11,7 +11,9 @@ import Guides from "./pages/guides";
 import Safety from "./pages/safety";
 import SafetyEmergency from "./pages/safety-emergency";
 import SafetyScam from "./pages/safety-scam";
-
+import AdminDashboard from './pages/admin/admin-dashboard';
+import AdminScamReports from './pages/admin/admin-scam-reports';
+import AdminOfficesData from './pages/admin/admin-offices-data';
 
 function App() {
   return (
@@ -49,6 +51,10 @@ function App() {
             <Route path="/safety" element={<Safety />} />
             <Route path="/safety-emergency" element={<SafetyEmergency />} />
             <Route path="/safety-scam" element={<SafetyScam />} />
+
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/offices-data" element={<AdminOfficesData />} />
+            <Route path="/admin-scam-reports" element={<AdminScamReports />} />
 
           </Routes>
         </main>

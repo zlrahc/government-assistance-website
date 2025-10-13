@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function AdminDashboard() {
-  const [authorized, setAuthorized] = useState(false);
+
+  const [authorized, setAuthorized] = useState(() => {
+    return localStorage.getItem("adminAuthorized") === "true";
+  });
+
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     if (password === "secret") {
       setAuthorized(true);
+      localStorage.setItem("adminAuthorized", "true");
+      window.location.reload();
     } else {
       alert("Incorrect password!");
     }
@@ -37,7 +43,6 @@ function AdminDashboard() {
 
   return (
     <div style={{ padding: "2rem" }}>
-
       <Container style={{ padding: "2rem" }}>
         <h1 className="mb-4">Admin Dashboard</h1>
         <p>Welcome to the admin panel. Use the links below to manage reports and data.</p>
@@ -66,8 +71,6 @@ function AdminDashboard() {
               </Card.Body>
             </Card>
           </Col>
-
-          {/* Add more cards here if needed */}
         </Row>
       </Container>
     </div>

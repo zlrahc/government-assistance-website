@@ -1,8 +1,8 @@
-import { Button, Row, Col } from 'react-bootstrap';
 import './App.css';
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Button, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
 import Home from "./pages/home";
 import Websites from "./pages/websites";
@@ -16,6 +16,23 @@ import AdminScamReports from './pages/admin/admin-scam-reports';
 import AdminOfficesData from './pages/admin/admin-offices-data';
 
 function App() {
+
+  //admin authentication
+
+    const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    setAuthorized(localStorage.getItem("adminAuthorized") === "true");
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminAuthorized");
+    setAuthorized(false);
+    window.location.reload();
+  };
+
+  //--admin authentication
+
   return (
 
     <>
@@ -35,6 +52,14 @@ function App() {
                 <Nav.Link as={Link} to="/offices" className="nav-link-custom">Offices</Nav.Link>
                 <Nav.Link as={Link} to="/guides" className="nav-link-custom">Guides</Nav.Link>
                 <Nav.Link as={Link} to="/safety" className="nav-link-custom">Safety</Nav.Link>
+                {authorized && (
+                  <button className="btn btn-outline-light"
+                    onClick={handleLogout}
+                    style={{ marginLeft: "2rem", padding: "0.3rem 0.8rem" }}
+                  >
+                    Logout
+                  </button>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>

@@ -456,6 +456,98 @@ main {
   transition: all 0.3s ease-in-out;
 }
 
+/* Background and layout */
+body {
+  background: linear-gradient(180deg, #f8fbff 0%, #eef3f8 100%);
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-weight: 800;
+  color: #0d1b2a;
+  letter-spacing: 1px;
+}
+
+.page-header hr {
+  width: 90px;
+  border: 2px solid #007bff;
+  margin: 12px auto;
+  border-radius: 3px;
+}
+
+.page-header p {
+  color: #6c757d;
+  font-size: 1.05rem;
+}
+
+/* Accordion container */
+.custom-accordion {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* Accordion items */
+.custom-accordion .accordion-item {
+  background-color: #fff;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  margin-bottom: 22px;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+.custom-accordion .accordion-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+/* Accordion header */
+.custom-accordion .accordion-header button {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 1.25rem 1.5rem;
+  border: none;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+}
+
+.custom-accordion .accordion-header button.collapsed {
+  background: #f8f9fa;
+  color: #000;
+}
+
+.custom-accordion .accordion-header button:not(.collapsed):hover {
+  background: linear-gradient(90deg, #0069d9, #004e9e);
+}
+
+/* Accordion body */
+.custom-accordion .accordion-body {
+  background-color: #ffffff;
+  border-top: 1px solid #e9ecef;
+  padding: 1.75rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Fade animation for accordion open */
+.accordion-collapse.show .accordion-body {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
 
 
 

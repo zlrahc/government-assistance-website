@@ -36,6 +36,8 @@ function Safety() {
       <Container className="text-center my-5">
               <hr />
               <h1 className="fw-bold">SAFETY</h1>
+
+              
             </Container>
 
       <div className="safety-section py-5">

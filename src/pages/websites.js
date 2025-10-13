@@ -125,8 +125,6 @@ const serviceCards = [
   },
 ];
 
-
-   // Helper function to render cards
   const renderCards = (cards) => (
     <Row className="g-4">
       {cards.map((card, index) => (

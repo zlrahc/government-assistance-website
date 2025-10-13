@@ -116,8 +116,7 @@ function SafetyScam() {
         ></div>
       
       </Container>
-
-
+      
       <Container
         className="my-5 d-flex justify-content-center"
         style={{ maxWidth: "1000px" }}

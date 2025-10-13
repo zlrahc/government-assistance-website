@@ -31,7 +31,9 @@ function AdminScamReports() {
     fetchReports();
   }, [authorized]);
 
-  const handleBlacklist = async (report) => {
+  const toggleBlacklist = async (report) => {
+    const newStatus = report.Status === "Blacklisted" ? "Pending" : "Blacklisted";
+
     try {
       await fetch(
         `https://sheetdb.io/api/v1/41tp0qhh84qgw/Name/${encodeURIComponent(
@@ -40,15 +42,13 @@ function AdminScamReports() {
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ data: { Status: "Blacklisted" } }),
+          body: JSON.stringify({ data: { Status: newStatus } }),
         }
       );
 
       // Update local state
       setReports((prev) =>
-        prev.map((r) =>
-          r.Name === report.Name ? { ...r, Status: "Blacklisted" } : r
-        )
+        prev.map((r) => (r.Name === report.Name ? { ...r, Status: newStatus } : r))
       );
     } catch (err) {
       console.error("Failed to update report:", err);
@@ -79,29 +79,45 @@ function AdminScamReports() {
             </tr>
           </thead>
           <tbody>
-            {reports
-              .filter((report) => report.Status !== "Blacklisted")
-              .map((report, index) => {
-                const isHovered = hoveredId === (report.id || index);
-                return (
-                  <tr key={report.id || index}>
-                    <td>{report.Name}</td>
-                    <td>{report.Email}</td>
-                    <td>{report.ScamSource}</td>
-                    <td>{report.Details}</td>
-                    <td>
-                      <Button
-                        variant={isHovered ? "danger" : report.Status === "True" ? "success" : "secondary"}
-                        onMouseEnter={() => setHoveredId(report.id || index)}
-                        onMouseLeave={() => setHoveredId(null)}
-                        onClick={() => handleBlacklist(report)}
-                      >
-                        {isHovered ? "Blacklist" : report.Status || "Pending"}
-                      </Button>
-                    </td>
-                  </tr>
-                );
-              })}
+            {reports.map((report, index) => {
+              const isHovered = hoveredId === (report.id || index);
+              const displayText =
+                isHovered
+                  ? report.Status === "Blacklisted"
+                    ? "Unblacklist"
+                    : "Blacklist"
+                  : report.Status || "Pending";
+
+              const variant =
+                isHovered
+                  ? report.Status === "Blacklisted"
+                    ? "warning"
+                    : "danger"
+                  : report.Status === "Blacklisted"
+                  ? "secondary"
+                  : report.Status === "True"
+                  ? "success"
+                  : "secondary";
+
+              return (
+                <tr key={report.id || index}>
+                  <td>{report.Name}</td>
+                  <td>{report.Email}</td>
+                  <td>{report.ScamSource}</td>
+                  <td>{report.Details}</td>
+                  <td>
+                    <Button
+                      variant={variant}
+                      onMouseEnter={() => setHoveredId(report.id || index)}
+                      onMouseLeave={() => setHoveredId(null)}
+                      onClick={() => toggleBlacklist(report)}
+                    >
+                      {displayText}
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
       )}

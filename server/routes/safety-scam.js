@@ -36,6 +36,38 @@ function isValidDomain(domain) {
   return domainRegex.test(domain);
 }
 
+// SheetDB.io blacklisted
+async function checkSheetDB(query) {
+  try {
+    const res = await axios.get("https://sheetdb.io/api/v1/41tp0qhh84qgw");
+    const data = res.data;
+
+    // Normalize the query
+    const normalizedQuery = query?.toString().trim().toLowerCase();
+
+    // Filter SheetDB rows
+    const filtered = data.filter((row) => {
+      if (row.Status?.toLowerCase() !== "blacklisted") return false;
+
+      const source = row.ScamSource?.toString().trim();
+
+      // Decide if it's a phone or domain
+      if (/^\+?\d+$/.test(normalizedQuery.replace(/\D/g, ""))) {
+        // Treat as phone
+        return normalizePhone(source) === normalizePhone(query);
+      } else {
+        // Treat as domain
+        return normalizeDomain(source) === normalizeDomain(query);
+      }
+    });
+
+    return { blacklisted: filtered.length > 0, entries: filtered };
+  } catch (err) {
+    console.error("SheetDB check error:", err.message);
+    return { blacklisted: false, error: err.message };
+  }
+}
+
 // VirusTotal
 async function checkVirusTotalDomain(domain) {
   if (!process.env.VT_API_KEY) return null;
@@ -69,13 +101,16 @@ async function checkPhoneHybrid(rawNumber) {
 
   const apiResult = await checkNumverify(normalized);
   const isOfficial = phoneWhiteList.has(normalized);
-  let verdict;
 
+  const sheetCheck = await checkSheetDB(normalized);
+
+  let verdict;
   if (isOfficial) verdict = "✅ Official Philippine Gov Number";
+  else if (sheetCheck.blacklisted) verdict = "⚠️ Likely unsafe – reported and blacklisted by GovAssist";
   else if (apiResult?.valid) verdict = "⚠️ Valid number but not official";
   else verdict = "❌ Invalid / suspicious";
 
-  return { ...apiResult, normalized, isOfficial, verdict };
+  return { ...apiResult, normalized, isOfficial, sheetCheck, verdict };
 }
 
 // Hybrid URL check
@@ -83,62 +118,45 @@ async function checkUrlHybrid(inputUrl) {
   const domain = normalizeDomain(inputUrl);
 
   if (!domain || !isValidDomain(domain)) {
-    return {
-      domain: inputUrl,
-      score: 0,
-      verdict: "❌ Invalid input",
-      reasons: ["Failed basic validation or invalid TLD"],
-      vt: null,
-    };
+    return { domain: inputUrl, score: 0, verdict: "❌ Invalid input", reasons: ["Failed basic validation or invalid TLD"], vt: null };
   }
 
   if (Array.from(domainWhiteList).some((d) => domain.endsWith(d))) {
-    return {
-      domain,
-      score: 0,
-      verdict: "✅ Official Government Domain",
-      reasons: ["Whitelist: official gov.ph domain"],
-      vt: null,
-    };
+    return { domain, score: 0, verdict: "✅ Official Government Domain", reasons: ["Whitelist: official gov.ph domain"], vt: null };
   }
 
+  const sheetCheck = await checkSheetDB(domain);
+
   let vt = null;
-  try {
-    vt = await checkVirusTotalDomain(domain);
-  } catch (err) {
-    vt = { error: "VT_ERROR", message: err.message };
-  }
+  try { vt = await checkVirusTotalDomain(domain); } 
+  catch (err) { vt = { error: "VT_ERROR", message: err.message }; }
 
   let score = 0;
   const reasons = [];
+
+  if (sheetCheck.blacklisted) {
+    score = 100;
+    reasons.push("SheetDB: blacklisted");
+  }
+
   const suspiciousWords = ["verify", "secure", "login", "claim", "reward", "bank", "confirm", "update", "account"];
-  if (suspiciousWords.some((w) => domain.includes(w))) {
-    score += 10;
-    reasons.push("Suspicious keyword");
-  }
-  if (domain.length > 60) {
-    score += 5;
-    reasons.push("Unusually long domain");
-  }
+  if (suspiciousWords.some((w) => domain.includes(w))) { score += 10; reasons.push("Suspicious keyword"); }
+  if (domain.length > 60) { score += 5; reasons.push("Unusually long domain"); }
 
   if (vt && !vt.error) {
     const stats = vt.last_analysis_stats || {};
     const malicious = stats.malicious || 0;
     const suspicious = stats.suspicious || 0;
-    if (malicious > 0) {
-      score += 80;
-      reasons.push(`VirusTotal: ${malicious} flagged malicious`);
-    } else if (suspicious > 0) {
-      score += 40;
-      reasons.push(`VirusTotal: ${suspicious} flagged suspicious`);
-    } else reasons.push("VirusTotal: no detections");
+    if (malicious > 0) { score += 80; reasons.push(`VirusTotal: ${malicious} flagged malicious`); } 
+    else if (suspicious > 0) { score += 40; reasons.push(`VirusTotal: ${suspicious} flagged suspicious`); } 
+    else reasons.push("VirusTotal: no detections");
   } else if (vt) {
     reasons.push(`VirusTotal: ${vt?.error || "no-data"}`);
   }
 
   const verdict = score >= 70 ? "HIGH RISK" : score >= 30 ? "SUSPICIOUS" : "LIKELY SAFE";
 
-  return { domain, score, verdict, reasons, vt };
+  return { domain, score, verdict, reasons, vt, sheetCheck };
 }
 
 // ------------------ Routes ------------------

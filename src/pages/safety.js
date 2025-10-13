@@ -11,48 +11,24 @@ function Safety() {
       title: "Emergency",
       img: emergencyIcon,
       link: "/safety-emergency",
-      description: `
-        A complete directory of official emergency hotlines.
-        Stay informed and know who to contact in times of crisis or disaster.
-      `,
+      description:
+        "A complete directory of official emergency hotlines. Stay informed and know who to contact in times of crisis or disaster.",
     },
     {
       id: 2,
       title: "Scam Protection",
       img: safetyIcon,
       link: "/safety-scam",
-      description: `
-        A verification tool to check websites or contact numbers 
-        and easily report suspicious scams to help protect 
-        others in the community.
-      `,
+      description:
+        "A verification tool to check websites or contact numbers and easily report suspicious scams to help protect others in the community.",
     },
   ];
 
   return (
-    <div style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>
+    <>
       {/* HEADER SECTION */}
       <Container className="text-center pt-4 pb-2">
-        <h1
-          className="fw-bold"
-          style={{
-            color: "#002b5c",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            marginBottom: "10px",
-          }}
-        >
-          Safety
-        </h1>
-        <div
-          style={{
-            width: "80px",
-            height: "4px",
-            backgroundColor: "#81bcfaff",
-            margin: "10px auto 20px",
-            borderRadius: "2px",
-          }}
-        ></div>
+        <h1 className="section-heading text-center mb-3">SAFETY</h1>
         <p
           style={{
             maxWidth: "700px",
@@ -66,53 +42,71 @@ function Safety() {
         </p>
       </Container>
 
-      {/* SAFETY CARDS */}
-      <div className="safety-section py-4">
+      {/* SAFETY CARDS (same design, thicker width) */}
+      <div className="services-section py-5">
         <Container>
           <Row className="g-4 align-items-stretch justify-content-center">
             {safetyCards.map((card) => (
-              <Col key={card.id} md={6} lg={5} className="d-flex">
+              <Col
+                key={card.id}
+                sm={10}
+                md={6}
+                lg={5}
+                className="d-flex justify-content-center"
+              >
                 <Link
                   to={card.link}
-                  className="safety-link flex-fill d-flex text-decoration-none text-dark"
+                  className="service-link d-flex flex-column flex-fill text-decoration-none text-dark"
+                  style={{ width: "100%" }}
                 >
                   <Card
-                    className="text-center border-0 safety-card flex-fill d-flex flex-column justify-content-between"
+                    className="service-card flex-fill text-center border-0"
+                    style={{
+                      borderRadius: "16px",
+                      backgroundColor: "#fff",
+                      boxShadow: "0 6px 14px rgba(0,0,0,0.15)",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      minHeight: "440px",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-6px)";
+                      e.currentTarget.style.boxShadow =
+                        "0 10px 22px rgba(0,0,0,0.25)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow =
+                        "0 6px 14px rgba(0,0,0,0.15)";
+                    }}
                   >
-
-                      
                     <Card.Img
                       variant="top"
                       src={card.img}
-                      className="safety-icon mx-auto"
+                      className="service-icon mx-auto mt-5"
                       style={{
-                        marginTop: "40px",
                         width: "200px",
                         height: "200px",
                         objectFit: "contain",
                       }}
                     />
-                    <Card.Body>
-                      <Card.Title
-                        className="fw-bold"
-                        style={{
-                          color: "#002b5c",
-                          fontSize: "1.7rem",
-                          marginTop: "10px",
-                        }}
-                      >
-                        {card.title}
-                      </Card.Title>
-                      <Card.Text
-                        style={{
-                          whiteSpace: "pre-line",
-                          color: "#555",
-                          fontSize: "1.05rem",
-                          marginTop: "10px",
-                        }}
-                      >
-                        {card.description}
-                      </Card.Text>
+                    <Card.Body className="d-flex flex-column justify-content-between flex-fill px-4">
+                      <div>
+                        <Card.Title
+                          className="fw-bold"
+                          style={{ fontSize: "1.6rem" }}
+                        >
+                          {card.title}
+                        </Card.Title>
+                        <Card.Text
+                          style={{
+                            fontSize: "1.05rem",
+                            color: "#555",
+                            marginTop: "10px",
+                          }}
+                        >
+                          {card.description}
+                        </Card.Text>
+                      </div>
                     </Card.Body>
                   </Card>
                 </Link>
@@ -121,7 +115,7 @@ function Safety() {
           </Row>
         </Container>
       </div>
-    </div>
+    </>
   );
 }
 

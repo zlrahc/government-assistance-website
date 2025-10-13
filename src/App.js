@@ -1,7 +1,7 @@
 import './App.css';
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Navbar, Nav, Container, Button, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, Container, Button, Row, Col, Modal, Form, Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 import Home from "./pages/home";
@@ -31,6 +31,8 @@ function App() {
   };
 
   //--admin authentication
+
+  const [showComplaintModal, setShowComplaintModal] = useState(false);
 
   return (
 
@@ -83,29 +85,177 @@ function App() {
         </main>
 
         <footer id="footer" className="gov-footer text-white py-5 mt-5">
-          <Container>
-            <div className="text-center">
-              <img
-                src="/logo512.png"
-                alt="Gov Assist Logo"
-                className="gov-logo mb-3"
-                width="160"
-                height="160"
-              />
-              <h4 className="fw-bold">GOV ASSIST</h4>
-              <p className="mb-2">
-                Carlos P. Garcia Avenue, UP Diliman, Quezon City
-              </p>
-              <p className="small mb-0">
-                Open Data • Freedom of Information • Philippine Business Databank • Philippine Business Hub • Contact Center ng Bayan • Official Gazette
-              </p>
-            </div>
+          <Container className="text-center">
+        
+            <img
+              src="/logo512.png"
+              alt="Gov Assist Logo"
+              className="gov-logo mb-3"
+              width="160"
+              height="160"
+            />
+            <h4 className="fw-bold">GOV ASSIST</h4>
+            <p className="small mb-1">
+              All content is in the public domain unless otherwise stated.
+            </p>
+            <p className="small mb-4">
+              Quezon City, Philippines
+            </p>
 
-            <div className="gov-footer-bottom mt-4 pt-3 border-top border-light text-center">
-              <p className="small mb-0">© 2025 Gov Assist. All rights reserved.</p>
+            <hr style={{ width: "30%", margin: "20px auto" }} />
+
+            <h5 className="fw-bold mb-3">Got a Concern?</h5>
+            <Button
+              variant="danger"
+              className="fw-semibold px-4 py-2"
+              onClick={() => setShowComplaintModal(true)}
+            >
+              Submit a Complaint
+            </Button>
+
+            <br/>
+            <br/>
+            <div className="text-center small">
+              © 2025 Gov Assist. All rights reserved.
             </div>
           </Container>
+
+          <Modal
+            show={showComplaintModal}
+            onHide={() => setShowComplaintModal(false)}
+            centered
+            size="lg"
+          >
+            <Modal.Body
+              style={{
+                backgroundColor: "#f8f9fa",
+                borderRadius: "15px",
+                padding: "2rem",
+              }}
+            >
+              <div className="text-center mb-4">
+                <h3
+                  style={{
+                    fontWeight: "700",
+                    color: "#003366",
+                    textShadow: "1px 1px 3px rgba(0,0,0,0.3)",
+                    marginTop: "1rem",
+                  }}
+                >
+                  File a Complaint
+                </h3>
+                <p
+                  style={{
+                    color: "#555",
+                    fontSize: "15px",
+                    maxWidth: "600px",
+                    margin: "0 auto",
+                  }}
+                >
+                  If you have experienced an issue or wish to raise a concern, please complete the form below.
+                </p>
+              </div>
+
+              <Card
+                className="p-4 shadow-sm mx-auto"
+                style={{
+                  width: "100%",
+                  maxWidth: "600px",
+                  backgroundColor: "#fff",
+                  borderRadius: "15px",
+                }}
+              >
+                <h5 className="mb-3 fw-bold">Complaint Details</h5>
+
+                <form
+                  id="complaint-form"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const form = e.target;
+                    const data = new FormData(form);
+
+                    // Add default status
+                    data.append("data[Status]", "Pending");
+
+                    // Send to your SheetDB or API endpoint
+                    fetch("https://sheetdb.io/api/v1/hylogu3mpv6y6", {
+                      method: "POST",
+                      body: data,
+                    })
+                      .then((response) => response.json())
+                      .then(() => {
+                        alert("Thank you! Your complaint has been submitted successfully.");
+                        form.reset();
+                        setShowComplaintModal(false);
+                      })
+                      .catch(() => {
+                        alert("Something went wrong. Please try again.");
+                      });
+                  }}
+                >
+                  <div className="mb-3 text-start">
+                    <label className="form-label fw-semibold">Full Name</label>
+                    <input
+                      type="text"
+                      name="data[Name]"
+                      className="form-control"
+                      placeholder="Enter your full name"
+                      required
+                    />
+                  </div>
+
+                  <div className="mb-3 text-start">
+                    <label className="form-label fw-semibold">Email Address</label>
+                    <input
+                      type="email"
+                      name="data[Email]"
+                      className="form-control"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+
+                  <div className="mb-3 text-start">
+                    <label className="form-label fw-semibold">Complaint Subject</label>
+                    <input
+                      type="text"
+                      name="data[Subject]"
+                      className="form-control"
+                      placeholder="e.g. Slow processing time, rude staff..."
+                      required
+                    />
+                  </div>
+
+                  <div className="mb-3 text-start">
+                    <label className="form-label fw-semibold">Describe your concern</label>
+                    <textarea
+                      name="data[Details]"
+                      rows="4"
+                      className="form-control"
+                      placeholder="Provide details about your complaint"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div className="text-end">
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      style={{
+                        boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
+                      }}
+                    >
+                      Submit Complaint
+                    </Button>
+                  </div>
+                </form>
+              </Card>
+            </Modal.Body>
+          </Modal>
+
         </footer>
+
+
 
 
 

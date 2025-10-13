@@ -94,26 +94,7 @@ function SafetyScam() {
       {/* Top Header */}
 
       <Container className="text-center pt-4 pb-2">
-        <h1
-          className="fw-bold"
-          style={{
-            color: "#002b5c",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            marginBottom: "10px",
-          }}
-        >
-          SCAM PROTECTION
-        </h1>
-        <div
-          style={{
-            width: "80px",
-            height: "4px",
-            backgroundColor: "#81bcfaff",
-            margin: "10px auto 20px",
-            borderRadius: "2px",
-          }}
-        ></div>
+        <h1 className="section-heading text-center mb-2">SCAM PROTECTION</h1>
       
       </Container>
       

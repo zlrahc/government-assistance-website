@@ -5,26 +5,7 @@ import "../App.css";
 function SafetyEmergency() {
   return (
       <><Container className="text-center pt-4 pb-2">
-      <h1
-        className="fw-bold"
-        style={{
-          color: "#002b5c",
-          textTransform: "uppercase",
-          letterSpacing: "1px",
-          marginBottom: "10px",
-        }}
-      >
-        EMERGENCY HOTLINES
-      </h1>
-      <div
-        style={{
-          width: "80px",
-          height: "4px",
-          backgroundColor: "#81bcfaff",
-          margin: "10px auto 20px",
-          borderRadius: "2px",
-        }}
-      ></div>
+      <h1 className="section-heading text-center mb-3">EMERGENCY HOTLINES</h1>
       <p
         style={{
           maxWidth: "700px",
@@ -38,9 +19,8 @@ function SafetyEmergency() {
     </Container><div className="py-5 bg-light">
         <Container>
 
-          {/* Accordion with styled cards */}
           <Accordion defaultActiveKey="0" alwaysOpen className="custom-accordion">
-            {/* Example Section */}
+
             <Accordion.Item eventKey="0" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header className="fw-semibold">National Emergency</Accordion.Header>
               <Accordion.Body>
@@ -90,7 +70,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* DILG, PNP, BFP, COAST GUARD */}
             <Accordion.Item eventKey="4" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header className="fw-semibold">DILG / PNP / BFP / Coast Guard</Accordion.Header>
               <Accordion.Body>
@@ -118,7 +97,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* MMDA, DOTr, Airports */}
             <Accordion.Item eventKey="5" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header>Transportation & Metro Services</Accordion.Header>
               <Accordion.Body className="fw-semibold">
@@ -141,7 +119,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* PAGASA, PHIVOLCS, DPWH */}
             <Accordion.Item eventKey="6" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header>Weather & Infrastructure</Accordion.Header>
               <Accordion.Body className="fw-semibold">
@@ -153,7 +130,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* Expressways */}
             <Accordion.Item eventKey="7" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header>Expressways & Roads</Accordion.Header>
               <Accordion.Body className="fw-semibold">
@@ -166,7 +142,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* LGUs */}
             <Accordion.Item eventKey="8" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header>Local Government Hotlines</Accordion.Header>
               <Accordion.Body className="fw-semibold">
@@ -181,7 +156,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* Water Utilities */}
             <Accordion.Item eventKey="9" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header>Water Utilities</Accordion.Header>
               <Accordion.Body className="fw-semibold">
@@ -192,7 +166,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* VAWC */}
             <Accordion.Item eventKey="10" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header>Violence Against Women & Children (VAWC)</Accordion.Header>
               <Accordion.Body className="fw-semibold">
@@ -206,7 +179,6 @@ function SafetyEmergency() {
               </Accordion.Body>
             </Accordion.Item>
 
-            {/* NCMH */}
             <Accordion.Item eventKey="11" className="shadow-sm mb-3 rounded-4 border-0">
               <Accordion.Header>Mental Health</Accordion.Header>
               <Accordion.Body className="fw-semibold">

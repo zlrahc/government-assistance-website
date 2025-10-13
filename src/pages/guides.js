@@ -19,13 +19,13 @@ function Guides() {
             backgroundColor: "#f9f9f9",
             boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
             marginTop: "15px",
-            textAlign: "center", // ✅ centers all text and elements
+            textAlign: "center", 
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
           
           <p style={{ maxWidth: "700px" }}>
             <strong>Step 1:</strong> Submit a completely filled-out application form with your <br /> 
@@ -51,7 +51,7 @@ function Guides() {
             your Postal ID will be delivered to your mailing address.
           </p>
 
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div className="note-section mt-4" style={{ maxWidth: "700px" }}>
             <p>
@@ -118,7 +118,7 @@ function Guides() {
             marginTop: "15px",
           }}
         >
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div style={{ textAlign: "center" }}>
             <strong>Step 1:</strong> Prepare the necessary requirements before applying for a PWD ID.
@@ -185,7 +185,7 @@ function Guides() {
           </div>
 
           <br />
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div className="note-section mt-4">
             <p>
@@ -215,7 +215,7 @@ function Guides() {
             marginTop: "15px",
           }}
         >
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div style={{ textAlign: "center" }}>
             To get a <strong>UMID (Unified Multi-Purpose ID)</strong> card, you must be a member of either the
@@ -266,7 +266,7 @@ function Guides() {
           </div>
 
           <br />
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div className="note-section mt-4">
             <p>
@@ -285,8 +285,6 @@ function Guides() {
     ],
     "How to Get National ID": [
       <>
-        <hr />
-
         <div
           style={{
             textAlign: "center",
@@ -326,7 +324,7 @@ function Guides() {
             </p>
           </div>
 
-          <hr style={{ width: "70%", margin: "20px auto", borderTop: "2px solid" }} />
+          <hr style={{ width: "100%", margin: "20px auto", borderTop: "2px solid" }} />
 
           <div
             className="note-section mt-4"
@@ -391,7 +389,6 @@ function Guides() {
     ],
     "Renew NBI Clearance": [
       <>
-        <hr />
         <br />
 
         <div
@@ -450,6 +447,8 @@ function Guides() {
             </a>
           </div>
 
+          <hr style={{ width: "100%", margin: "20px auto" }} />
+
           <div
             className="note-section mt-4"
             style={{
@@ -474,7 +473,6 @@ function Guides() {
     ],
     "Apply for DOST Accreditation & Certification": [
       <>
-        <hr />
         <br />
 
         <div
@@ -537,6 +535,8 @@ function Guides() {
             </a>
           </div>
 
+          <hr style={{ width: "100%", margin: "20px auto" }} />
+
           <div
             className="note-section mt-4"
             style={{
@@ -563,8 +563,6 @@ function Guides() {
     ],
     "How to Register as a Voter (COMELEC)": [
       <>
-        <hr />
-
         <div
           style={{
             textAlign: "center",
@@ -683,7 +681,7 @@ function Guides() {
             </ul>
           </div>
 
-          <hr style={{ width: "50%", margin: "30px auto" }} />
+          <hr style={{ width: "100%", margin: "30px auto" }} />
 
           <div
             className="note-section mt-4"
@@ -717,7 +715,6 @@ function Guides() {
     ],
     "Register for TIN": [
       <>
-        <hr />
         <br />
 
         <div
@@ -773,6 +770,8 @@ function Guides() {
             </a>
           </div>
 
+          <hr style={{ width: "100%", margin: "20px auto" }} />
+
           <div
             className="note-section mt-4"
             style={{
@@ -804,26 +803,7 @@ function Guides() {
     <div className="guides-page">
       {/* HEADER SECTION */}
       <Container className="text-center pt-4 pb-2">
-        <h1
-          className="fw-bold"
-          style={{
-            color: "#002b5c",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            marginBottom: "10px",
-          }}
-        >
-          SERVICE GUIDES
-        </h1>
-        <div
-          style={{
-            width: "80px",
-            height: "4px",
-            backgroundColor: "#81bcfaff",
-            margin: "10px auto 20px",
-            borderRadius: "2px",
-          }}
-        ></div>
+        <h1 className="section-heading text-center mb-3">SERVICE GUIDES</h1>
         <p
           style={{
             maxWidth: "700px",
@@ -837,7 +817,8 @@ function Guides() {
       </Container>
       <Container className="py-3">
         <Row className="mt-1">
-          {/* Left column: service list */}
+
+          {/*Left column*/}
           <Col md={4} className="mb-4">
             <Card className="shadow-lg border-0 rounded-5 list-card">
               <Card.Body className="p-0 ">
@@ -860,10 +841,9 @@ function Guides() {
             </Card>
           </Col>
 
-          {/* Right column: guide content */}
+          {/*Right column*/}
           <Col md={8} >
             <Card className="shadow-lg border-0 rounded-4 guide-card">
-              {/* Blue header section */}
               <div className="card-blue-header py-3 text-center rounded-top-4">
                 <h4 className="m-0 fw-bold text-white">{selectedService}</h4>
               </div>

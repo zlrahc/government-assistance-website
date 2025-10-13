@@ -1,9 +1,9 @@
 import { Router } from "express";
-import offices from "../data/gov-offices.js";
+import officesByRegion from "../data/office-database.js";
 
 const router = Router();
 
-// Helper: check if office is open
+// Check if office is open
 function isOfficeOpen(hours) {
   if (!hours) return false;
   const now = new Date();
@@ -20,9 +20,30 @@ function isOfficeOpen(hours) {
   return tzNow >= openTime && tzNow <= closeTime;
 }
 
+// Flatten offices with region info
+function getAllOffices() {
+  return Object.values(officesByRegion).flat().map(o => ({ ...o }));
+}
+
+// Haversine distance
+function getDistanceKm(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1 * Math.PI / 180) *
+            Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) ** 2;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
 // Get all offices with open status
 router.get("/", (req, res) => {
-  const updated = offices.map(o => ({ ...o, available: isOfficeOpen(o.hours) }));
+  const updated = getAllOffices().map(o => ({
+    ...o,
+    available: isOfficeOpen(o.hours)
+  }));
   res.json(updated);
 });
 
@@ -31,10 +52,13 @@ router.get("/nearby", (req, res) => {
   const { lat, lon } = req.query;
   if (!lat || !lon) return res.status(400).json({ error: "Missing coordinates" });
 
-  const updated = offices.map(o => ({ ...o, available: isOfficeOpen(o.hours) }));
+  const updated = getAllOffices().map(o => ({
+    ...o,
+    available: isOfficeOpen(o.hours)
+  }));
+
   const nearby = updated.filter(o =>
-    Math.abs(o.lat - parseFloat(lat)) < 0.5 &&
-    Math.abs(o.lon - parseFloat(lon)) < 0.5
+    getDistanceKm(o.lat, o.lon, parseFloat(lat), parseFloat(lon)) <= 25
   );
 
   res.json(nearby);

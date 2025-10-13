@@ -390,6 +390,73 @@ main {
   letter-spacing: 0.5px;
 }
 
+.guides-page {
+  background: linear-gradient(135deg, #f8f9fa, #e8f0ff);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* Title & divider */
+.section-title {
+  color: #0d6efd;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.divider {
+  width: 100px;
+  height: 4px;
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Left card list */
+.list-card {
+  background: #ffffff;
+  transition: 0.3s ease;
+}
+.service-item {
+  border: none;
+  font-size: 1rem;
+  color: #333;
+  transition: 0.3s ease;
+}
+.service-item:hover {
+  background-color: #e8f0ff;
+  color: #0d6efd;
+  transform: scale(1.02);
+}
+.active-item {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+  border-left: 5px solid #084298;
+}
+
+/* Right guide card */
+.guide-card {
+  background: #ffffff;
+  transition: 0.3s ease;
+}
+.card-blue-header {
+  background-color: #0d6efd;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+}
+.step-box {
+  background: #f8faff;
+  border-left: 4px solid #0d6efd;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.step-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Smooth animation */
+.list-card, .guide-card, .step-box {
+  transition: all 0.3s ease-in-out;
+}
+
+
 
 
 

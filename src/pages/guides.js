@@ -8,6 +8,7 @@ import "../App.css";
 
 function Guides() {
   const services = {
+    
     "How to Get Postal ID": [
       <>
         <div
@@ -18,20 +19,26 @@ function Guides() {
             backgroundColor: "#f9f9f9",
             boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
             marginTop: "15px",
+            textAlign: "center", // ✅ centers all text and elements
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <hr />
-          <br />
-          <p>
-            <strong>Step 1:</strong> Submit a completely filled-out application form with your <br /> requirements and payment to any post office.
-            Application forms are available <br /> in all post offices or you may download it&nbsp;
+          
+          <p style={{ maxWidth: "700px" }}>
+            <strong>Step 1:</strong> Submit a completely filled-out application form with your <br /> 
+            requirements and payment to any post office. Application forms are available <br /> 
+            in all post offices or you may download it&nbsp;
             <a href={postalForm} target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
           </p>
 
           <hr style={{ width: "50%", margin: "20px auto" }} />
 
-          <p>
-            <strong>Step 2:</strong> Upon approval of your requirements, proceed to the nearest <br /> ID capture station (
+          <p style={{ maxWidth: "700px" }}>
+            <strong>Step 2:</strong> Upon approval of your requirements, proceed to the nearest <br /> 
+            ID capture station (
             <a href={rushList} target="_blank" rel="noopener noreferrer"><strong>see full list of capture stations</strong></a>) 
             where you will be <br /> digitally photographed and fingerprinted. 
             There are over 270 capture stations <br /> nationwide in designated post offices and selected malls.
@@ -39,14 +46,14 @@ function Guides() {
 
           <hr style={{ width: "50%", margin: "20px auto" }} />
 
-          <p>
-            <strong>Step 3:</strong> Once you complete the ID data capture process, <br /> your Postal ID will be delivered to your mailing address.
+          <p style={{ maxWidth: "700px" }}>
+            <strong>Step 3:</strong> Once you complete the ID data capture process, <br /> 
+            your Postal ID will be delivered to your mailing address.
           </p>
 
-          <br />
           <hr />
 
-          <div className="note-section mt-4">
+          <div className="note-section mt-4" style={{ maxWidth: "700px" }}>
             <p>
               <strong>NOTE:</strong><br />
               <strong className="text-danger">SAME DAY</strong> release — cut-off time for capturing is from 
@@ -56,7 +63,7 @@ function Guides() {
             </p>
           </div>
 
-          <div className="rush-availability mt-4">
+          <div className="rush-availability mt-4" style={{ textAlign: "center" }}>
             <div className="rush-header">
               <strong>IMPORTANT: RUSH AVAILABILITY GUIDE</strong>
             </div>
@@ -92,13 +99,14 @@ function Guides() {
             </div>
           </div>
 
-          <div className="alert alert-warning mt-4" role="alert">
+          <div className="alert alert-warning mt-4" role="alert" style={{ maxWidth: "700px" }}>
             <strong>IMPORTANT:</strong> Rush availability may vary depending on the post office branch. 
             Check your nearest Post Office Location for processing times.
           </div>
         </div>
       </>
     ],
+
     "How to Get PWD ID": [
       <>
         <div
@@ -835,42 +843,52 @@ function Guides() {
 
   const [selectedService, setSelectedService] = useState("How to Get National ID");
 
-  return (
-    <div className="bg-light min-vh-100">
-      <Container className="text-center my-5">
-        <hr/>
-        <h1 className="text-center fw-bold mb-5">SERVICE GUIDES</h1>
-        <Row>
+    return (
+    <div className="guides-page">
+      <Container className="py-5">
+        <h1 className="text-center fw-bold mb-4 section-title">SERVICE GUIDES</h1>
+        <hr className="divider mx-auto" />
+        <Row className="mt-5">
           {/* Left column: service list */}
-          <Col md={4}>
-            <ListGroup>
-              {Object.keys(services).map((service) => (
-                <ListGroup.Item
-                  key={service}
-                  action
-                  active={selectedService === service}
-                  onClick={() => setSelectedService(service)}
-                  className="fw-semibold"
-                >
-                  {service}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
+          <Col md={4} className="mb-4">
+            <Card className="shadow-lg border-0 rounded-4 list-card">
+              <Card.Body className="p-0">
+                <ListGroup variant="flush">
+                  {Object.keys(services).map((service) => (
+                    <ListGroup.Item
+                      key={service}
+                      action
+                      active={selectedService === service}
+                      onClick={() => setSelectedService(service)}
+                      className={`fw-semibold py-3 px-4 service-item ${
+                        selectedService === service ? "active-item" : ""
+                      }`}
+                    >
+                      {service}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card.Body>
+            </Card>
           </Col>
 
           {/* Right column: guide content */}
           <Col md={8}>
-            <Card className="shadow-sm">
+            <Card className="shadow-lg border-0 rounded-4 guide-card">
               {/* Blue header section */}
-              <div className="card-blue-header text-center">
-                <h4 className="m-0 fw-bold">{selectedService}</h4>
+              <div className="card-blue-header py-3 text-center rounded-top-4">
+                <h4 className="m-0 fw-bold text-white">{selectedService}</h4>
               </div>
 
-              <Card.Body>
+              <Card.Body className="p-4">
                 <div className="guide-content">
                   {Array.isArray(services[selectedService]) &&
                     services[selectedService].map((step, index) => (
-                      <div key={index} className="guide-step mb-3">
+                      <div
+                        key={index}
+                        className="guide-step mb-3 p-3 rounded step-box shadow-sm"
+                      >
+                        
                         {step}
                       </div>
                     ))}
@@ -878,8 +896,6 @@ function Guides() {
               </Card.Body>
             </Card>
           </Col>
-
-
         </Row>
       </Container>
     </div>

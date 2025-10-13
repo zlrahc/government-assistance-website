@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Container, Card, Button } from "react-bootstrap";
+import { Col, Row, Container, Card, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function AdminDashboard() {
@@ -8,10 +8,19 @@ function AdminDashboard() {
     return localStorage.getItem("adminAuthorized") === "true";
   });
 
+  const getDailyPassword = () => {
+    const today = new Date();
+    const year = today.getFullYear().toString().slice(-2);
+    const month = (today.getMonth() + 1).toString().padStart(2, "0");
+    const day = today.getDate().toString().padStart(2, "0");
+    const secretWord = "verify";
+    return `${secretWord}-${year}${month}${day}`;
+  };
+
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (password === "secret") {
+    if (password === getDailyPassword()) {
       setAuthorized(true);
       localStorage.setItem("adminAuthorized", "true");
       window.location.reload();
@@ -22,22 +31,26 @@ function AdminDashboard() {
 
   if (!authorized) {
     return (
-      <div style={{ padding: "2rem" }}>
-        <h1>Admin Login</h1>
-        <input
-          type="password"
-          placeholder="Enter admin password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ padding: "0.5rem", fontSize: "1rem" }}
-        />
-        <button
-          onClick={handleLogin}
-          style={{ marginLeft: "1rem", padding: "0.5rem 1rem", fontSize: "1rem" }}
-        >
-          Login
-        </button>
-      </div>
+      <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
+        <Card style={{ width: "100%", maxWidth: "400px", padding: "2rem" }} className="shadow">
+          <Card.Body>
+            <Card.Title className="text-center mb-4">Admin Login</Card.Title>
+            <Form>
+              <Form.Group controlId="adminPassword" className="mb-3">
+                <Form.Control
+                  type="password"
+                  placeholder="Enter admin password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <Button variant="primary" onClick={handleLogin} className="w-100">
+                Login
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Container>
     );
   }
 

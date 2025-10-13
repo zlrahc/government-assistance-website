@@ -22,17 +22,17 @@ function SafetyScam() {
     setOpen(false);
 
     try {
-  const response = await fetch("http://localhost:5000/check", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query }),
-  });
+      const response = await fetch("http://localhost:5000/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
 
-  const data = await response.json();
-  setResult(data.error ? { verdict: `❌ Error: ${data.error}` } : data);
-} catch (err) {
-  setResult({ verdict: "❌ Error connecting to scam checker API" });
-}
+      const data = await response.json();
+      setResult(data.error ? { verdict: `❌ Error: ${data.error}` } : data);
+    } catch (err) {
+      setResult({ verdict: "❌ Error connecting to scam checker API" });
+    }
 
 
     setLoading(false);
@@ -89,14 +89,19 @@ function SafetyScam() {
   };
 
   return (
-    
+
     <div>
       {/* Top Header */}
 
       <div className="text-center mb-5">
+<<<<<<< HEAD
           <h1 className="fw-bold text-black mt-5">SCAM PROTECTION</h1> 
           <hr style={{ width: "68%", margin: "20px auto" }} />
         </div>
+=======
+        <h1 className="fw-bold text-black mt-5">SCAM PROTECTION</h1><hr />
+      </div>
+>>>>>>> 8aa181834ca3922c1164ec0f5215e0957aa9be60
 
 
       <Container
@@ -268,7 +273,7 @@ function SafetyScam() {
         </Modal.Header>
         <Modal.Body>
           <p>
-              Enter a website or phone number that you’re unsure of to check if it might be suspicious or unsafe.
+            Enter a website or phone number that you’re unsure of to check if it might be suspicious or unsafe.
           </p>
           <p>Stay alert and help protect yourself and others from scams by verifying before you trust.</p>
         </Modal.Body>
@@ -280,133 +285,142 @@ function SafetyScam() {
       </Modal>
 
 
+      {/* Report Section */}
+      <Container className="my-5 d-flex justify-content-center">
+        <Card
+          className="p-5 shadow-lg border-0"
+          style={{
+            backgroundColor: "#f8f9fa",
+            borderRadius: "20px",
+            width: "100%",
+            maxWidth: "1000px",
+          }}
+        >
+          <div className="text-center mb-4">
 
-{/* Report Section */}
-<Container className="my-5 d-flex justify-content-center">
-  <Card
-    className="p-5 shadow-lg border-0"
-    style={{
-      backgroundColor: "#f8f9fa",
-      borderRadius: "20px",
-      width: "100%",
-      maxWidth: "1000px",
-    }}
-  >
-    <div className="text-center mb-4">
-      
-      <h3
-        style={{
-          fontWeight: "700",
-          color: "#003366",
-          textShadow: "1px 1px 3px rgba(0,0,0,0.3)",
-          marginTop: "1rem",
-        }}
-      >
-        Report a Scam?
-      </h3>
-      <p
-        style={{
-          color: "#555",
-          fontSize: "15px",
-          maxWidth: "600px",
-          margin: "0 auto",
-        }}
-      >
-        If you encountered a suspicious website or number, you can report it below.
-      </p>
-    </div>
+            <h3
+              style={{
+                fontWeight: "700",
+                color: "#003366",
+                textShadow: "1px 1px 3px rgba(0,0,0,0.3)",
+                marginTop: "1rem",
+              }}
+            >
+              Report a Scam?
+            </h3>
+            <p
+              style={{
+                color: "#555",
+                fontSize: "15px",
+                maxWidth: "600px",
+                margin: "0 auto",
+              }}
+            >
+              If you encountered a suspicious website or number, you can report it below.
+            </p>
+          </div>
 
-    <Card
-      className="p-4 safety-report-card shadow-sm mx-auto"
-      style={{
-        width: "100%",
-        maxWidth: "600px",
-        backgroundColor: "#fff",
-        borderRadius: "15px",
-      }}
-    >
-      <h4 className="mb-3">Report Details</h4>
-
-      <form
-        id="sheetdb-form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const form = e.target;
-          const data = new FormData(form);
-
-          fetch("https://sheetdb.io/api/v1/fqstfncx2ctku", {
-            method: "POST",
-            body: data,
-          })
-            .then((response) => response.json())
-            .then(() => {
-              alert("Thank you! Your report has been submitted successfully.");
-              form.reset();
-            })
-            .catch(() => {
-              alert("Something went wrong. Please try again.");
-            });
-        }}
-      >
-        <div className="mb-3 text-start">
-          <label className="form-label fw-semibold">Your Name</label>
-          <input
-            type="text"
-            name="data[Name]"
-            className="form-control"
-            placeholder="Enter your full name"
-            required
-          />
-        </div>
-
-        <div className="mb-3 text-start">
-          <label className="form-label fw-semibold">Email</label>
-          <input
-            type="email"
-            name="data[Email]"
-            className="form-control"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-
-        <div className="mb-3 text-start">
-          <label className="form-label fw-semibold">Website or Phone Number</label>
-          <input
-            type="text"
-            name="data[ScamSource]"
-            className="form-control"
-            placeholder="https://example.com or +639XXXXXXXXX"
-            required
-          />
-        </div>
-
-        <div className="mb-3 text-start">
-          <label className="form-label fw-semibold">Describe the incident</label>
-          <textarea
-            name="data[Details]"
-            rows="4"
-            className="form-control"
-            placeholder="Provide details about the suspicious activity"
-            required
-          ></textarea>
-        </div>
-
-        <div className="text-end">
-          <Button
-            type="submit"
-            variant="primary"
+          <Card
+            className="p-4 safety-report-card shadow-sm mx-auto"
             style={{
-              boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
+              width: "100%",
+              maxWidth: "600px",
+              backgroundColor: "#fff",
+              borderRadius: "15px",
             }}
           >
-            Submit Report
-          </Button>
-        </div>
-      </form>
-    </Card>
-  </Card>
-</Container>
+            <h4 className="mb-3">Report Details</h4>
+
+            <form
+              id="sheetdb-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target;
+                const data = new FormData(form);
+
+                data.append("data[Status]", "Pending");
+
+                let scamValue = data.get("data[ScamSource]") || "";
+                if (/^\+|^https?:\/\//.test(scamValue)) {
+                  scamValue = "'" + scamValue;
+                  data.set("data[ScamSource]", scamValue);
+                }
+
+                fetch("https://sheetdb.io/api/v1/41tp0qhh84qgw", {
+                  method: "POST",
+                  body: data,
+                })
+                  .then((response) => response.json())
+                  .then(() => {
+                    alert("Thank you! Your report has been submitted successfully.");
+                    form.reset();
+                  })
+                  .catch(() => {
+                    alert("Something went wrong. Please try again.");
+                  });
+              }}
+            >
+              <div className="mb-3 text-start">
+                <label className="form-label fw-semibold">Your Name</label>
+                <input
+                  type="text"
+                  name="data[Name]"
+                  className="form-control"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div className="mb-3 text-start">
+                <label className="form-label fw-semibold">Email</label>
+                <input
+                  type="email"
+                  name="data[Email]"
+                  className="form-control"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+              <div className="mb-3 text-start">
+                <label className="form-label fw-semibold">Website or Phone Number</label>
+                <input
+                  type="text"
+                  name="data[ScamSource]"
+                  className="form-control"
+                  placeholder="https://example.com or +639XXXXXXXXX"
+                  required
+                />
+              </div>
+
+              <div className="mb-3 text-start">
+                <label className="form-label fw-semibold">Describe the incident</label>
+                <textarea
+                  name="data[Details]"
+                  rows="4"
+                  className="form-control"
+                  placeholder="Provide details about the suspicious activity"
+                  required
+                ></textarea>
+              </div>
+
+              <div className="text-end">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  style={{
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
+                  }}
+                >
+                  Submit Report
+                </Button>
+              </div>
+            </form>
+
+
+          </Card>
+        </Card>
+      </Container>
 
 
 

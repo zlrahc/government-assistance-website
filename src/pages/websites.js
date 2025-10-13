@@ -2,74 +2,175 @@ import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import websitesIcon from "../assets/icons/websites.png";
-import officesIcon from "../assets/icons/offices.png";
-import guidesIcon from "../assets/icons/guides.png";
-import safetyIcon from "../assets/icons/safety.png";
+import opIcon from "../assets/icons/op.png";
+import ovpIcon from "../assets/icons/ovp.png";
+import senateIcon from "../assets/icons/senate.png";
+import representativeIcon from "../assets/icons/representative.png";
+import supremeIcon from "../assets/icons/supreme.png";
+import depedIcon from "../assets/icons/deped.png";
+import dfaIcon from "../assets/icons/dfa.png";
+import dbmIcon from "../assets/icons/dbm.png";
 
+import philhealthIcon from "../assets/icons/philhealth.png";
+import sssIcon from "../assets/icons/sss.png";
+import pagibigIcon from "../assets/icons/pagibig.png";
+import gsisIcon from "../assets/icons/gsis.png";
+import psaIcon from "../assets/icons/psa.png";
+import dohIcon from "../assets/icons/doh.png";
+import ltoIcon from "../assets/icons/lto.png";
+import prcIcon from "../assets/icons/prc.png";
 import '../App.css';
 
 function Websites() {
-  const serviceCards = [
-    {
-      id: 1,
-      title: "Official Websites",
-      img: websitesIcon,
-      link: "/websites",
-      description: "Access verified government portals and official online resources."
-    },
-    {
-      id: 2,
-      title: "Government Offices",
-      img: officesIcon,
-      link: "/offices",
-      description: "Find contact information and locations of key government agencies."
-    },
-    {
-      id: 3,
-      title: "Guides",
-      img: guidesIcon,
-      link: "/guides",
-      description: "Step-by-step guides to help you process documents easily and efficiently."
-    },
-    {
-      id: 4,
-      title: "Safety & Awareness",
-      img: safetyIcon,
-      link: "/safety",
-      description: "Learn about safety protocols, emergency contacts, and scam prevention tips."
-    },
-  ];
 
-  // To render multiple rows, we can repeat the array or chunk it if needed
-  const repeatCount = 4; // replicate 4 times like original
-  const allCards = Array.from({ length: repeatCount }, () => serviceCards).flat();
+const govCards = [
+  {
+    title: "Office of the President",
+    img: opIcon,
+    description: "Official site of the President of the Philippines, featuring news, updates, and directives.",
+    link: "https://op-proper.gov.ph/",
+  },
+  {
+    title: "Office of the Vice President",
+    img: ovpIcon,
+    description: "Learn about the Vice President’s initiatives, public engagements, and national programs.",
+    link: "https://ovp.gov.ph/",
+  },
+  {
+    title: "Senate of the Philippines",
+    img: senateIcon,
+    description: "Provides information on senators, legislation, and recent Senate sessions.",
+    link: "https://senate.gov.ph/",
+  },
+  {
+    title: "House of Representatives",
+    img: representativeIcon,
+    description: "Official site for House members, bills, and updates from the lower chamber of Congress.",
+    link: "https://congress.gov.ph/",
+  },
+  {
+    title: "Supreme Court",
+    img: supremeIcon,
+    description: "Access judicial rulings, court schedules, and official news from the Supreme Court.",
+    link: "https://sc.judiciary.gov.ph/",
+  },
+  {
+    title: "Department of Education (DepEd)",
+    img: depedIcon,
+    description: "Covers K–12 education programs, learning resources, and DepEd announcements.",
+    link: "https://deped.gov.ph/",
+  },
+  {
+    title: "Department of Foreign Affairs (DFA)",
+    img: dfaIcon,
+    description: "Handles passports, visa services, and official travel advisories for Filipinos.",
+    link: "https://dfa.gov.ph/",
+  },
+  {
+    title: "Department of Budget and Management (DBM)",
+    img: dbmIcon,
+    description: "Publishes national budget updates, guidelines, and fiscal transparency reports.",
+    link: "https://dbm.gov.ph/",
+  },
+];
+
+const serviceCards = [
+  {
+    title: "PhilHealth",
+    img: philhealthIcon,
+    description: "Healthcare insurance for Filipinos. Register, pay contributions, or access benefits online.",
+    link: "https://www.philhealth.gov.ph/",
+  },
+  {
+    title: "Social Security System (SSS)",
+    img: sssIcon,
+    description: "Manage contributions, apply for benefits, and track loan applications online.",
+    link: "https://www.sss.gov.ph/",
+  },
+  {
+    title: "Pag-IBIG Fund (HDMF)",
+    img: pagibigIcon,
+    description: "For housing loans, savings programs, and online member services for Filipinos.",
+    link: "https://www.pagibigfund.gov.ph/",
+  },
+  {
+    title: "Government Service Insurance System (GSIS)",
+    img: gsisIcon,
+    description: "Offers insurance, loans, and retirement benefits for government employees.",
+    link: "https://www.gsis.gov.ph/",
+  },
+  {
+    title: "Philippine Statistics Authority (PSA)",
+    img: psaIcon,
+    description: "Get birth, marriage, and other civil registry documents via PSA Serbilis or ePhilID.",
+    link: "https://psahelpline.ph/",
+  },
+  {
+    title: "Department of Health (DOH)",
+    img: dohIcon,
+    description: "National health updates, programs, and public advisories from DOH Philippines.",
+    link: "https://www.doh.gov.ph/",
+  },
+  {
+    title: "Land Transportation Office (LTO)",
+    img: ltoIcon,
+    description: "Renew your license, register vehicles, and check traffic violations online.",
+    link: "https://www.lto.gov.ph/",
+  },
+  {
+    title: "Professional Regulation Commission (PRC)",
+    img: prcIcon,
+    description: "Manage license renewals, exam schedules, and PRC online services.",
+    link: "https://www.prc.gov.ph/",
+  },
+];
+
+
+   // Helper function to render cards
+  const renderCards = (cards) => (
+    <Row className="g-4">
+      {cards.map((card, index) => (
+        <Col key={index} md={6} lg={3}>
+          <a href={card.link} target="_blank" rel="noopener noreferrer" className="service-link">
+            <Card className="service-card text-center border-0 shadow-sm">
+              <Card.Img variant="top" src={card.img} className="service-icon mx-auto mt-3" />
+              <Card.Body>
+                <Card.Title>{card.title}</Card.Title>
+                <Card.Text>{card.description}</Card.Text>
+              </Card.Body>
+            </Card>
+          </a>
+        </Col>
+      ))}
+    </Row>
+  );
 
   return (
     <>
-      <Container className="text-center my-5">
-        <h1 className="display-1 fw-bold">OFFICIAL GOVERNMENT WEBSITES</h1>
+
+    <Container className="text-center my-5">
+        <hr />
+        <h1 className="fw-bold">OFFICIAL SERVICES WEBSITES</h1>
       </Container>
 
       <div className="services-section py-5">
         <Container>
-          <Row className="g-4">
-            {allCards.map((card, index) => (
-              <Col key={index} md={6} lg={3}>
-                <Link to={card.link} className="service-link">
-                  <Card className="service-card text-center border-0 shadow-sm">
-                    <Card.Img variant="top" src={card.img} className="service-icon mx-auto mt-3" />
-                    <Card.Body>
-                      <Card.Title>{card.title}</Card.Title>
-                      <Card.Text>{card.description}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Col>
-            ))}
-          </Row>
+          {renderCards(serviceCards)}
         </Container>
       </div>
+      
+      <Container className="text-center my-5">
+        <hr />
+        <h1 className="fw-bold">OFFICIAL GOVERNMENT WEBSITES</h1>
+      </Container>
+
+      <div className="services-section py-5">
+        <Container>
+          {renderCards(govCards)}
+        </Container>
+      </div>
+
+      
     </>
   );
 }

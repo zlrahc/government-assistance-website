@@ -41,8 +41,9 @@ function Offices() {
 
   return (
     <Container className="text-center my-5">
-      <h1 className="display-5 fw-bold mb-4">
-        Nearby Government Offices
+      <hr />
+      <h1 className="fw-bold mb-5">
+        NEARBY GOVERNMENT OFFICES
       </h1>
 
       {loading ? (

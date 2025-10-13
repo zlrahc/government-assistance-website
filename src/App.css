@@ -237,3 +237,161 @@ main {
   width: 100vw;
   object-fit: cover;
 }
+
+/*SERVICE GUIDES - POSTAL ID RUSH GUIDE (CLEAN & COMPACT)*/
+.rush-availability {
+  margin-top: 1.5rem;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.rush-header {
+  background-color: #ffeb3b;
+  color: #000;
+  font-weight: 800;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Flex layout - all in one line */
+.rush-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-top: none;
+  padding: 15px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.rush-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: #fff;
+  min-width: 130px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+}
+
+.rush-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* SAME DAY */
+.rush-sameday .rush-label {
+  background-color: #d32f2f;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
+  line-height: 1;
+  min-width: 60px;
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+/* NEXT DAY */
+.rush-nextday .rush-label {
+  background-color: #1565c0;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
+  line-height: 1;
+  min-width: 60px;
+  box-shadow: none;
+  text-transform: uppercase;
+}
+
+
+/* 2–4 DAY BOXES */
+.rush-day .rush-number {
+  background-color: #ffeb3b;
+  color: #000;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  padding: 3px 8px;
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Text next to the number */
+.rush-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .rush-steps {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .rush-box {
+    min-width: 100px;
+  }
+}
+
+/* Centering for the NOTE section under Postal ID */
+.note-section {
+  text-align: center;
+  margin: 1.5rem auto;
+  max-width: 700px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.note-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #212529;
+  margin: 0;
+}
+
+.note-section strong {
+  font-weight: 700;
+}
+
+.card-blue-header {
+  background-color: #004080;
+  color: white;
+  padding: 18px 0; 
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+.card-blue-header h4 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+
+
+
+
+

@@ -94,7 +94,8 @@ function SafetyScam() {
       {/* Top Header */}
 
       <div className="text-center mb-5">
-          <h1 className="fw-bold text-black mt-5">SCAM PROTECTION</h1><hr/>
+          <h1 className="fw-bold text-black mt-5">SCAM PROTECTION</h1> 
+          <hr style={{ width: "68%", margin: "20px auto" }} />
         </div>
 
 

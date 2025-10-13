@@ -34,9 +34,9 @@ function Safety() {
   return (
     <div>
       <Container className="text-center my-5">
-        <h1 className="display-1 fw-bold">SAFETY</h1>
-        <hr/>
-      </Container>
+              <hr />
+              <h1 className="fw-bold mb-5">SAFETY</h1>
+            </Container>
 
       <div className="safety-section py-5">
         <Container>

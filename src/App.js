@@ -82,73 +82,34 @@ function App() {
           </Routes>
         </main>
 
-        <footer className="py-5 text-white" id="footer">
+        <footer id="footer" className="gov-footer text-white py-5 mt-5">
           <Container>
-            <Row>
-              {/* Quick Links */}
-              <Col xs={6} md={2} className="mb-3">
-                <h5>Quick Links</h5>
-                <ul className="nav flex-column">
-                  <li className="nav-item mb-2"><Link to="/" className="nav-link p-0 text-body-secondary">Home</Link></li>
-                  <li className="nav-item mb-2"><Link to="/websites" className="nav-link p-0 text-body-secondary">Official Websites</Link></li>
-                  <li className="nav-item mb-2"><Link to="/offices" className="nav-link p-0 text-body-secondary">Offices</Link></li>
-                  <li className="nav-item mb-2"><Link to="/guides" className="nav-link p-0 text-body-secondary">Guides</Link></li>
-                  <li className="nav-item mb-2"><Link to="/safety" className="nav-link p-0 text-body-secondary">Safety</Link></li>
-                </ul>
-              </Col>
+            <div className="text-center">
+              <img
+                src="/logo512.png"
+                alt="Gov Assist Logo"
+                className="gov-logo mb-3"
+                width="160"
+                height="160"
+              />
+              <h4 className="fw-bold">GOV ASSIST</h4>
+              <p className="mb-2">
+                Carlos P. Garcia Avenue, UP Diliman, Quezon City
+              </p>
+              <p className="small mb-0">
+                Open Data • Freedom of Information • Philippine Business Databank • Philippine Business Hub • Contact Center ng Bayan • Official Gazette
+              </p>
+            </div>
 
-              {/* Resources */}
-              <Col xs={6} md={2} className="mb-3">
-                <h5>Resources</h5>
-                <ul className="nav flex-column">
-                  <li className="nav-item mb-2"><Link to="/faq" className="nav-link p-0 text-body-secondary">FAQs</Link></li>
-                  <li className="nav-item mb-2"><Link to="/guidelines" className="nav-link p-0 text-body-secondary">Guidelines</Link></li>
-                  <li className="nav-item mb-2"><Link to="/support" className="nav-link p-0 text-body-secondary">Support</Link></li>
-                </ul>
-              </Col>
-
-              {/* About */}
-              <Col xs={6} md={2} className="mb-3">
-                <h5>About</h5>
-                <ul className="nav flex-column">
-                  <li className="nav-item mb-2"><Link to="/about" className="nav-link p-0 text-body-secondary">Our Team</Link></li>
-                  <li className="nav-item mb-2"><Link to="/privacy" className="nav-link p-0 text-body-secondary">Privacy Policy</Link></li>
-                  <li className="nav-item mb-2"><Link to="/terms" className="nav-link p-0 text-body-secondary">Terms & Conditions</Link></li>
-                </ul>
-              </Col>
-
-              {/* Newsletter */}
-              <Col md={5} className="offset-md-1 mb-3">
-                <form>
-                  <h5>Subscribe to our newsletter</h5>
-                  <p>Monthly digest of what's new and exciting from us.</p>
-                  <div className="d-flex flex-column flex-sm-row w-100 gap-2">
-                    <label htmlFor="newsletter1" className="visually-hidden">Email address</label>
-                    <input id="newsletter1" type="email" className="form-control" placeholder="Email address" />
-                    <Button className="btn btn-primary" type="button">Subscribe</Button>
-                  </div>
-                </form>
-              </Col>
-            </Row>
-
-            {/* Bottom Bar */}
-            <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-              <p>© 2025 Gov Assist. All rights reserved.</p>
-              <ul className="list-unstyled d-flex">
-                <li className="ms-3">
-                  <a className="link-body-emphasis" href="#" aria-label="Instagram">
-                    <i className="bi bi-instagram"></i>
-                  </a>
-                </li>
-                <li className="ms-3">
-                  <a className="link-body-emphasis" href="#" aria-label="Facebook">
-                    <i className="bi bi-facebook"></i>
-                  </a>
-                </li>
-              </ul>
+            <div className="gov-footer-bottom mt-4 pt-3 border-top border-light text-center">
+              <p className="small mb-0">© 2025 Gov Assist. All rights reserved.</p>
             </div>
           </Container>
         </footer>
+
+
+
+
 
 
       </Router>

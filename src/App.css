@@ -596,6 +596,49 @@ h1.fw-bold {
   transform: translateY(-4px);
 }
 
+.gov-footer {
+  background: linear-gradient(90deg, #0073E6 0%, #0052A5 100%);
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.gov-footer h4 {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.gov-footer .btn-danger {
+  background-color: #e63946;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.gov-footer .btn-danger:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.gov-logo {
+  opacity: 0.9;
+}
+
+.gov-links p {
+  color: #dbe9f6;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gov-footer-bottom {
+  color: #d1e3f3;
+  font-size: 0.85rem;
+}
+
+
+
+
 
 
 

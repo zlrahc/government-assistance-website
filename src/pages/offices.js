@@ -43,44 +43,72 @@ function Offices() {
   }
 
   return (
-    <Container className="text-center my-5">
-      <hr />
-      <h1 className="fw-bold mb-5">
-        NEARBY GOVERNMENT OFFICES
+    <><Container className="text-center pt-4 pb-2">
+      <h1
+        className="fw-bold"
+        style={{
+          color: "#002b5c",
+          textTransform: "uppercase",
+          letterSpacing: "1px",
+          marginBottom: "10px",
+        }}
+      >
+        GOVERNMENT OFFICES
       </h1>
-      <h1 className="display-5 fw-bold mb-4">Government Offices</h1>
-
-      {loading ? (
-        <Spinner animation="border" />
-      ) : (
-        displayedOffices.length > 0 ? (
-          <Row className="g-4">
-            {displayedOffices.map((office) => (
-              <Col key={office.id} md={4}>
-                <Card className="p-3 shadow" style={{ minHeight: "250px" }}>
-                  <h4 className="my-4">{office.name}</h4>
-                  <p>
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${office.lat},${office.lon}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {office.address}
-                    </a>
-                  </p>
-                  <p><strong>Contact:</strong> {office.contact}</p>
-                  <p className={office.available ? "text-success" : "text-danger"}>
-                    {office.available ? "Available" : "Closed"}
-                  </p>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        ) : (
-          <p>No offices found nearby.</p>
-        )
-      )}
+      <div
+        style={{
+          width: "80px",
+          height: "4px",
+          backgroundColor: "#81bcfaff",
+          margin: "10px auto 20px",
+          borderRadius: "2px",
+        }}
+      ></div>
+      <p
+        style={{
+          maxWidth: "700px",
+          margin: "0 auto",
+          color: "#555",
+          fontSize: "1.1rem",
+        }}
+      >
+        A directory of official government offices with their addresses and contact information.
+      </p>
     </Container>
+    
+    <Container className="text-center my-5">
+
+        {loading ? (
+          <Spinner animation="border" />
+        ) : (
+          displayedOffices.length > 0 ? (
+            <Row className="g-4">
+              {displayedOffices.map((office) => (
+                <Col key={office.id} md={4}>
+                  <Card className="p-3 shadow" style={{ minHeight: "250px" }}>
+                    <h4 className="my-4">{office.name}</h4>
+                    <p>
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${office.lat},${office.lon}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {office.address}
+                      </a>
+                    </p>
+                    <p><strong>Contact:</strong> {office.contact}</p>
+                    <p className={office.available ? "text-success" : "text-danger"}>
+                      {office.available ? "Available" : "Closed"}
+                    </p>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          ) : (
+            <p>No offices found nearby.</p>
+          )
+        )}
+      </Container></>
   );
 }
 

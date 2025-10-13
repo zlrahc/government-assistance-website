@@ -405,17 +405,6 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            RENEW YOUR NBI MULTIPURPOSE CLEARANCE
-          </h4>
 
           <p style={{ fontSize: "1.05rem", lineHeight: "1.7em", color: "#333" }}>
             The <strong>National Bureau of Investigation (NBI)</strong> now allows applicants to
@@ -499,20 +488,10 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            APPLY FOR DOST ACCREDITATION & CERTIFICATION
-          </h4>
+        
 
           <p style={{ fontSize: "1.05rem", lineHeight: "1.7em", color: "#333" }}>
-            The Department of Science and Technology (DOST) offers
+            The <strong>Department of Science and Technology (DOST) </strong> offers
             accreditation and certification programs for various services,
             products, and institutions. These help ensure quality standards and
             compliance with national and international norms.
@@ -597,20 +576,9 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "20px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            HOW TO REGISTER AS A VOTER (COMELEC)
-          </h4>
 
           <p style={{ fontSize: "1.05rem", color: "#333", lineHeight: "1.7em" }}>
-            The Commission on Elections (COMELEC) offers multiple ways to
+            The <strong>Commission on Elections (COMELEC) </strong> offers multiple ways to
             accomplish and submit your voter registration form. <br />
             Choose <strong>only one</strong> of the following methods:
           </p>
@@ -763,17 +731,6 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            REGISTER FOR TAXPAYER IDENTIFICATION NUMBER (TIN)
-          </h4>
 
           <p style={{ fontSize: "1.05rem", lineHeight: "1.7em", color: "#333" }}>
             You may apply for your <strong>TIN</strong> through the BIR’s primary registration process.
@@ -840,22 +797,51 @@ function Guides() {
 
   };
 
-  const [selectedService, setSelectedService] = useState("How to Get National ID");
+  const [selectedService, setSelectedService] = useState("How to Get Postal ID");
 
     return (
+      
     <div className="guides-page">
-      <Container className="py-5">
-        <h1 className="text-center fw-bold mb-4 section-title text-black">SERVICE GUIDES</h1>
-        <hr className="divider mx-auto" />
-        <p className="text-secondary text-center">
-            Step-by-step instructions for availing essential government services and public documents.
-          </p>
-        <Row className="mt-5">
+      {/* HEADER SECTION */}
+      <Container className="text-center pt-4 pb-2">
+        <h1
+          className="fw-bold"
+          style={{
+            color: "#002b5c",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            marginBottom: "10px",
+          }}
+        >
+          SERVICE GUIDES
+        </h1>
+        <div
+          style={{
+            width: "80px",
+            height: "4px",
+            backgroundColor: "#81bcfaff",
+            margin: "10px auto 20px",
+            borderRadius: "2px",
+          }}
+        ></div>
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#555",
+            fontSize: "1.1rem",
+          }}
+        >
+          Step-by-step instructions for availing essential government services and public documents.
+        </p>
+      </Container>
+      <Container className="py-3">
+        <Row className="mt-1">
           {/* Left column: service list */}
           <Col md={4} className="mb-4">
-            <Card className="shadow-lg border-0 rounded-4 list-card">
-              <Card.Body className="p-0">
-                <ListGroup variant="flush">
+            <Card className="shadow-lg border-0 rounded-5 list-card">
+              <Card.Body className="p-0 ">
+                <ListGroup variant>
                   {Object.keys(services).map((service) => (
                     <ListGroup.Item
                       key={service}
@@ -875,7 +861,7 @@ function Guides() {
           </Col>
 
           {/* Right column: guide content */}
-          <Col md={8}>
+          <Col md={8} >
             <Card className="shadow-lg border-0 rounded-4 guide-card">
               {/* Blue header section */}
               <div className="card-blue-header py-3 text-center rounded-top-4">

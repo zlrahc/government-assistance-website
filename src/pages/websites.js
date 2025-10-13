@@ -126,29 +126,69 @@ const serviceCards = [
 ];
 
   const renderCards = (cards) => (
-    <Row className="g-4">
-      {cards.map((card, index) => (
-        <Col key={index} md={6} lg={3}>
-          <a href={card.link} target="_blank" rel="noopener noreferrer" className="service-link">
-            <Card className="service-card text-center border-0 shadow-sm">
-              <Card.Img variant="top" src={card.img} className="service-icon mx-auto mt-3" />
-              <Card.Body>
-                <Card.Title>{card.title}</Card.Title>
-                <Card.Text>{card.description}</Card.Text>
-              </Card.Body>
+      <Row className="g-4 align-items-stretch">
+        {cards.map((card, index) => (
+          <Col key={index} sm={6} md={4} lg={3} className="d-flex">
+            <Card className="service-card flex-fill text-center border-0">
+              <a
+                href={card.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="service-link d-flex flex-column flex-fill text-decoration-none text-dark"
+              >
+                <Card.Img
+                  variant="top"
+                  src={card.img}
+                  className="service-icon mx-auto mt-3"
+                />
+                <Card.Body className="d-flex flex-column justify-content-between flex-fill">
+                  <div>
+                    <Card.Title>{card.title}</Card.Title>
+                    <Card.Text>{card.description}</Card.Text>
+                  </div>
+                </Card.Body>
+              </a>
             </Card>
-          </a>
-        </Col>
-      ))}
-    </Row>
-  );
+          </Col>
+        ))}
+      </Row>
+    );
+
 
   return (
     <>
-
-    <Container className="text-center my-5">
-        <hr />
-        <h1 className="fw-bold">OFFICIAL SERVICES WEBSITES</h1>
+     {/* HEADER SECTION */}
+      <Container className="text-center pt-4 pb-2">
+        <h1
+          className="fw-bold"
+          style={{
+            color: "#002b5c",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            marginBottom: "10px",
+          }}
+        >
+          OFFICIAL SERVICES WEBSITES
+        </h1>
+        <div
+          style={{
+            width: "80px",
+            height: "4px",
+            backgroundColor: "#81bcfaff",
+            margin: "10px auto 20px",
+            borderRadius: "2px",
+          }}
+        ></div>
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#555",
+            fontSize: "1.1rem",
+          }}
+        >
+          Access official links to government services and online applications.
+        </p>
       </Container>
 
       <div className="services-section py-5">
@@ -157,9 +197,37 @@ const serviceCards = [
         </Container>
       </div>
       
-      <Container className="text-center my-5">
-        <hr />
-        <h1 className="fw-bold">OFFICIAL GOVERNMENT WEBSITES</h1>
+      <Container className="text-center pt-4 pb-2">
+        <h1
+          className="fw-bold"
+          style={{
+            color: "#002b5c",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            marginBottom: "10px",
+          }}
+        >
+          OFFICIAL GOVERNMENT WEBSITES
+        </h1>
+        <div
+          style={{
+            width: "80px",
+            height: "4px",
+            backgroundColor: "#81bcfaff",
+            margin: "10px auto 20px",
+            borderRadius: "2px",
+          }}
+        ></div>
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#555",
+            fontSize: "1.1rem",
+          }}
+        >
+          Access official links to government services and online applications.
+        </p>
       </Container>
 
       <div className="services-section py-5">

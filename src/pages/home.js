@@ -28,10 +28,10 @@ function Home() {
   return (
     <>
       <div
-        className="hero-section"
+        className="hero-section w-100"
         style={{ backgroundImage: `linear-gradient(rgba(0, 123, 255, 0.4), rgba(0, 123, 255, 0.4)), url(${heroBg})`}}
       >
-        <div className="hero-content">
+      <div className="hero-content">
           <h1 className="hero-title">Welcome to Gov Assist</h1>
           <p className="hero-subtitle">
             Your one-stop platform for accessing official government  <br />
@@ -42,7 +42,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="services-section py-5">
+      <div className="services-section py-5 mb-5">
         <Container>
           <center><h1 className="fw-bold mb-5">Services</h1></center>
           <Row className="g-4">

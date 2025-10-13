@@ -846,7 +846,7 @@ function Guides() {
     <div className="guides-page">
       <Container className="py-5">
         <h1 className="text-center fw-bold mb-4 section-title text-black">SERVICE GUIDES</h1>
-        <hr className="divider mx-auto" />
+        <hr className="divider w-100 mx-auto mb-5" />
         <p className="text-secondary text-center">
             Step-by-step instructions for availing essential government services and public documents.
           </p>

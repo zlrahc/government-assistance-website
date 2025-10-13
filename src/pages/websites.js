@@ -147,8 +147,10 @@ const serviceCards = [
     <>
 
     <Container className="text-center my-5">
-        <hr />
+
         <h1 className="fw-bold">OFFICIAL SERVICES WEBSITES</h1>
+        <hr className="divider w-100 mx-auto mb-5" />
+
       </Container>
 
       <div className="services-section py-5">

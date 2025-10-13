@@ -72,18 +72,6 @@ function AdminDashboard() {
               </Card.Body>
             </Card>
           </Col>
-
-          <Col>
-            <Card className="shadow-sm h-100">
-              <Card.Body className="d-flex flex-column justify-content-between">
-                <Card.Title>Blacklist</Card.Title>
-                <Card.Text>Manage blacklisted domains and phone numbers.</Card.Text>
-                <Button as={Link} to="/admin-blacklist" variant="danger">
-                  Go to Blacklist
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
         </Row>
       </Container>
     </div>

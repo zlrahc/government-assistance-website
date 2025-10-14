@@ -126,31 +126,52 @@ const serviceCards = [
 ];
 
   const renderCards = (cards) => (
-    <Row className="g-4">
+    <Row className="g-4 align-items-stretch">
       {cards.map((card, index) => (
-        <Col key={index} md={6} lg={3}>
-          <a href={card.link} target="_blank" rel="noopener noreferrer" className="service-link">
-            <Card className="service-card text-center border-0 shadow-sm">
-              <Card.Img variant="top" src={card.img} className="service-icon mx-auto mt-3" />
-              <Card.Body>
-                <Card.Title>{card.title}</Card.Title>
-                <Card.Text>{card.description}</Card.Text>
-              </Card.Body>
-            </Card>
-          </a>
+        <Col key={index} sm={6} md={4} lg={3} className="d-flex">
+          <Card className="service-card flex-fill text-center border-0">
+  <a
+    href={card.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="service-link d-flex flex-column flex-fill"
+  >
+    <div className="service-icon-wrapper">
+      <Card.Img
+        variant="top"
+        src={card.img}
+        className="service-icon mx-auto"
+      />
+    </div>
+    <Card.Body className="d-flex flex-column justify-content-between flex-fill">
+      <div>
+        <Card.Title>{card.title}</Card.Title>
+        <Card.Text>{card.description}</Card.Text>
+      </div>
+    </Card.Body>
+  </a>
+</Card>
+
         </Col>
       ))}
     </Row>
   );
 
+
   return (
     <>
-
-    <Container className="text-center my-5">
-
-        <h1 className="fw-bold">OFFICIAL SERVICES WEBSITES</h1>
-        <hr className="divider w-100 mx-auto mb-5" />
-
+      <Container className="text-center pt-4 pb-2">
+        <h1 className="section-heading text-center mb-3">OFFICIAL SERVICES WEBSITE</h1>
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#555",
+            fontSize: "1.1rem",
+          }}
+        >
+          Access official links to government services and online applications.
+        </p>
       </Container>
 
       <div className="services-section py-5">
@@ -159,9 +180,19 @@ const serviceCards = [
         </Container>
       </div>
       
-      <Container className="text-center my-5">
-        <hr />
-        <h1 className="fw-bold">OFFICIAL GOVERNMENT WEBSITES</h1>
+      <Container className="text-center pt-4 pb-2">
+        <h1 className="section-heading text-center mb-3">OFFICIAL GOVERNMENT WEBSITE</h1>
+        
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#555",
+            fontSize: "1.1rem",
+          }}
+        >
+          Access official links to government services and online applications.
+        </p>
       </Container>
 
       <div className="services-section py-5">

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { Container, Card, Spinner, Row, Col } from "react-bootstrap";
+import { Container, Card, Spinner, Row, Col, Badge } from "react-bootstrap";
 
 function Offices() {
   const [offices, setOffices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userCoords, setUserCoords] = useState(null);
 
-  // Fetch all offices
   useEffect(() => {
     const fetchAllOffices = async () => {
       setLoading(true);
@@ -23,7 +22,6 @@ function Offices() {
     fetchAllOffices();
   }, []);
 
-  // Get user location
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -33,52 +31,67 @@ function Offices() {
     }
   }, []);
 
-  // Filter nearby offices
   let displayedOffices = offices;
   if (userCoords) {
     const { latitude, longitude } = userCoords;
-    displayedOffices = offices.filter(o =>
-      Math.abs(o.lat - latitude) < 0.1 && Math.abs(o.lon - longitude) < 0.1
+    displayedOffices = offices.filter(
+      (o) => Math.abs(o.lat - latitude) < 0.1 && Math.abs(o.lon - longitude) < 0.1
     );
   }
 
   return (
-    <Container className="text-center my-5">
+    <>
+      <Container className="text-center pt-4 pb-2">
+            <h1 className="section-heading text-center mb-3">GOVERNMENT OFFICES</h1>
+            <p
+              style={{
+                maxWidth: "700px",
+                margin: "0 auto",
+                color: "#555",
+                fontSize: "1.1rem",
+              }}
+            >
+              A directory of official government offices with their addresses and contact information.
+            </p>
+      </Container>
 
-      <h1 className="display-5 fw-bold mb-4">Government Offices</h1>
-      <hr className="divider w-100 mx-auto mb-5" />
-
-      {loading ? (
-        <Spinner animation="border" />
-      ) : (
-        displayedOffices.length > 0 ? (
-          <Row className="g-4">
+      <Container className="text-center my-5">
+        {loading ? (
+          <Spinner animation="border" />
+        ) : displayedOffices.length > 0 ? (
+          <Row className="g-4 justify-content-center">
             {displayedOffices.map((office) => (
-              <Col key={office.id} md={4}>
-                <Card className="p-3 shadow" style={{ minHeight: "250px" }}>
-                  <h4 className="my-4">{office.name}</h4>
-                  <p>
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${office.lat},${office.lon}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+              <Col key={office.id} md={4} sm={6} xs={12} className="d-flex">
+                <Card className="office-card flex-fill">
+                  <Card.Body>
+                    <h4 className="fw-bold text-primary mb-3">{office.name}</h4>
+                    <p>
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${office.lat},${office.lon}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="office-link"
+                      >
+                        {office.address}
+                      </a>
+                    </p>
+                    <p><strong>Contact:</strong> {office.contact}</p>
+                    <Badge
+                      bg={office.available ? "success" : "danger"}
+                      className="status-badge px-3 py-2 mt-2"
                     >
-                      {office.address}
-                    </a>
-                  </p>
-                  <p><strong>Contact:</strong> {office.contact}</p>
-                  <p className={office.available ? "text-success" : "text-danger"}>
-                    {office.available ? "Available" : "Closed"}
-                  </p>
+                      {office.available ? "Available" : "Closed"}
+                    </Badge>
+                  </Card.Body>
                 </Card>
               </Col>
             ))}
           </Row>
         ) : (
           <p>No offices found nearby.</p>
-        )
-      )}
-    </Container>
+        )}
+      </Container>
+    </>
   );
 }
 

@@ -19,13 +19,13 @@ function Guides() {
             backgroundColor: "#f9f9f9",
             boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
             marginTop: "15px",
-            textAlign: "center", // ✅ centers all text and elements
+            textAlign: "center", 
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
           
           <p style={{ maxWidth: "700px" }}>
             <strong>Step 1:</strong> Submit a completely filled-out application form with your <br /> 
@@ -51,7 +51,7 @@ function Guides() {
             your Postal ID will be delivered to your mailing address.
           </p>
 
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div className="note-section mt-4" style={{ maxWidth: "700px" }}>
             <p>
@@ -118,7 +118,7 @@ function Guides() {
             marginTop: "15px",
           }}
         >
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div style={{ textAlign: "center" }}>
             <strong>Step 1:</strong> Prepare the necessary requirements before applying for a PWD ID.
@@ -185,7 +185,7 @@ function Guides() {
           </div>
 
           <br />
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div className="note-section mt-4">
             <p>
@@ -215,7 +215,7 @@ function Guides() {
             marginTop: "15px",
           }}
         >
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div style={{ textAlign: "center" }}>
             To get a <strong>UMID (Unified Multi-Purpose ID)</strong> card, you must be a member of either the
@@ -266,7 +266,7 @@ function Guides() {
           </div>
 
           <br />
-          <hr />
+          <hr style={{ width: "100%", margin: "20px auto" }} />
 
           <div className="note-section mt-4">
             <p>
@@ -285,8 +285,6 @@ function Guides() {
     ],
     "How to Get National ID": [
       <>
-        <hr />
-
         <div
           style={{
             textAlign: "center",
@@ -326,7 +324,7 @@ function Guides() {
             </p>
           </div>
 
-          <hr style={{ width: "70%", margin: "20px auto", borderTop: "2px solid" }} />
+          <hr style={{ width: "100%", margin: "20px auto", borderTop: "2px solid" }} />
 
           <div
             className="note-section mt-4"
@@ -391,7 +389,6 @@ function Guides() {
     ],
     "Renew NBI Clearance": [
       <>
-        <hr />
         <br />
 
         <div
@@ -405,17 +402,6 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            RENEW YOUR NBI MULTIPURPOSE CLEARANCE
-          </h4>
 
           <p style={{ fontSize: "1.05rem", lineHeight: "1.7em", color: "#333" }}>
             The <strong>National Bureau of Investigation (NBI)</strong> now allows applicants to
@@ -461,6 +447,8 @@ function Guides() {
             </a>
           </div>
 
+          <hr style={{ width: "100%", margin: "20px auto" }} />
+
           <div
             className="note-section mt-4"
             style={{
@@ -485,7 +473,6 @@ function Guides() {
     ],
     "Apply for DOST Accreditation & Certification": [
       <>
-        <hr />
         <br />
 
         <div
@@ -499,20 +486,10 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            APPLY FOR DOST ACCREDITATION & CERTIFICATION
-          </h4>
+        
 
           <p style={{ fontSize: "1.05rem", lineHeight: "1.7em", color: "#333" }}>
-            The Department of Science and Technology (DOST) offers
+            The <strong>Department of Science and Technology (DOST) </strong> offers
             accreditation and certification programs for various services,
             products, and institutions. These help ensure quality standards and
             compliance with national and international norms.
@@ -558,6 +535,8 @@ function Guides() {
             </a>
           </div>
 
+          <hr style={{ width: "100%", margin: "20px auto" }} />
+
           <div
             className="note-section mt-4"
             style={{
@@ -584,8 +563,6 @@ function Guides() {
     ],
     "How to Register as a Voter (COMELEC)": [
       <>
-        <hr />
-
         <div
           style={{
             textAlign: "center",
@@ -597,20 +574,9 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "20px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            HOW TO REGISTER AS A VOTER (COMELEC)
-          </h4>
 
           <p style={{ fontSize: "1.05rem", color: "#333", lineHeight: "1.7em" }}>
-            The Commission on Elections (COMELEC) offers multiple ways to
+            The <strong>Commission on Elections (COMELEC) </strong> offers multiple ways to
             accomplish and submit your voter registration form. <br />
             Choose <strong>only one</strong> of the following methods:
           </p>
@@ -715,7 +681,7 @@ function Guides() {
             </ul>
           </div>
 
-          <hr style={{ width: "50%", margin: "30px auto" }} />
+          <hr style={{ width: "100%", margin: "30px auto" }} />
 
           <div
             className="note-section mt-4"
@@ -749,7 +715,6 @@ function Guides() {
     ],
     "Register for TIN": [
       <>
-        <hr />
         <br />
 
         <div
@@ -763,17 +728,6 @@ function Guides() {
             margin: "0 auto",
           }}
         >
-          <h4
-            style={{
-              fontWeight: "bold",
-              color: "#0A2E69",
-              marginBottom: "15px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-            }}
-          >
-            REGISTER FOR TAXPAYER IDENTIFICATION NUMBER (TIN)
-          </h4>
 
           <p style={{ fontSize: "1.05rem", lineHeight: "1.7em", color: "#333" }}>
             You may apply for your <strong>TIN</strong> through the BIR’s primary registration process.
@@ -816,6 +770,8 @@ function Guides() {
             </a>
           </div>
 
+          <hr style={{ width: "100%", margin: "20px auto" }} />
+
           <div
             className="note-section mt-4"
             style={{
@@ -840,22 +796,33 @@ function Guides() {
 
   };
 
-  const [selectedService, setSelectedService] = useState("How to Get National ID");
+  const [selectedService, setSelectedService] = useState("How to Get Postal ID");
 
     return (
+      
     <div className="guides-page">
-      <Container className="py-5">
-        <h1 className="text-center fw-bold mb-4 section-title text-black">SERVICE GUIDES</h1>
-        <hr className="divider w-100 mx-auto mb-5" />
-        <p className="text-secondary text-center">
-            Step-by-step instructions for availing essential government services and public documents.
-          </p>
-        <Row className="mt-5">
-          {/* Left column: service list */}
+      {/* HEADER SECTION */}
+      <Container className="text-center pt-4 pb-2">
+        <h1 className="section-heading text-center mb-3">SERVICE GUIDES</h1>
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#555",
+            fontSize: "1.1rem",
+          }}
+        >
+          Step-by-step instructions for availing essential government services and public documents.
+        </p>
+      </Container>
+      <Container className="py-3">
+        <Row className="mt-1">
+
+          {/*Left column*/}
           <Col md={4} className="mb-4">
-            <Card className="shadow-lg border-0 rounded-4 list-card">
-              <Card.Body className="p-0">
-                <ListGroup variant="flush">
+            <Card className="shadow-lg border-0 rounded-5 list-card">
+              <Card.Body className="p-0 ">
+                <ListGroup variant>
                   {Object.keys(services).map((service) => (
                     <ListGroup.Item
                       key={service}
@@ -874,10 +841,9 @@ function Guides() {
             </Card>
           </Col>
 
-          {/* Right column: guide content */}
-          <Col md={8}>
+          {/*Right column*/}
+          <Col md={8} >
             <Card className="shadow-lg border-0 rounded-4 guide-card">
-              {/* Blue header section */}
               <div className="card-blue-header py-3 text-center rounded-top-4">
                 <h4 className="m-0 fw-bold text-white">{selectedService}</h4>
               </div>

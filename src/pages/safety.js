@@ -26,7 +26,7 @@ function Safety() {
 
   return (
     <>
-      {/* HEADER SECTION */}
+      {/*HEADER SECTION*/}
       <Container className="text-center pt-4 pb-2">
         <h1 className="section-heading text-center mb-3">SAFETY</h1>
         <p
@@ -42,7 +42,6 @@ function Safety() {
         </p>
       </Container>
 
-      {/* SAFETY CARDS (same design, thicker width) */}
       <div className="services-section py-5">
         <Container>
           <Row className="g-4 align-items-stretch justify-content-center">

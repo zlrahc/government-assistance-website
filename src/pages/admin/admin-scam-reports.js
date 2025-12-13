@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { Table, Container, Spinner, Button } from "react-bootstrap";
+import { Table, Container, Spinner, Button, Card } from "react-bootstrap";
 
 function AdminScamReports() {
   const [authorized, setAuthorized] = useState(null);
@@ -46,7 +46,6 @@ function AdminScamReports() {
         }
       );
 
-      // Update local state
       setReports((prev) =>
         prev.map((r) => (r.Name === report.Name ? { ...r, Status: newStatus } : r))
       );
@@ -60,68 +59,77 @@ function AdminScamReports() {
   if (!authorized) return <Navigate to="/admin" replace />;
 
   return (
-    <Container style={{ padding: "2rem" }}>
-      <h2 className="mb-4">Scam Reports</h2>
+    <Container className="d-flex justify-content-center py-5">
+    <Card
+      className="shadow-lg rounded-4"
+      style={{ width: "90%", maxWidth: "1000px" }}
+    >
+      <div className="card-blue-header py-3 text-center rounded-top-4">
+        <h4 className="m-0 fw-bold text-white">Scam Reports</h4>
+      </div>
 
-      {loading ? (
-        <div className="text-center">
-          <Spinner animation="border" variant="primary" />
-        </div>
-      ) : (
-        <Table striped bordered hover responsive>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Scam Source</th>
-              <th>Details</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reports.map((report, index) => {
-              const isHovered = hoveredId === (report.id || index);
-              const displayText =
-                isHovered
-                  ? report.Status === "Blacklisted"
-                    ? "Unblacklist"
-                    : "Blacklist"
-                  : report.Status || "Pending";
+      <Card.Body className="p-4">
+        {loading ? (
+          <div className="text-center py-5">
+            <Spinner animation="border" variant="primary" />
+          </div>
+        ) : (
+          <Table striped bordered hover responsive>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Scam Source</th>
+                <th>Details</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reports.map((report, index) => {
+                const isHovered = hoveredId === (report.id || index);
+                const displayText =
+                  isHovered
+                    ? report.Status === "Blacklisted"
+                      ? "Unblacklist"
+                      : "Blacklist"
+                    : report.Status || "Pending";
 
-              const variant =
-                isHovered
-                  ? report.Status === "Blacklisted"
-                    ? "warning"
-                    : "danger"
-                  : report.Status === "Blacklisted"
-                  ? "secondary"
-                  : report.Status === "True"
-                  ? "success"
-                  : "secondary";
+                const variant =
+                  isHovered
+                    ? report.Status === "Blacklisted"
+                      ? "warning"
+                      : "danger"
+                    : report.Status === "Blacklisted"
+                    ? "secondary"
+                    : report.Status === "True"
+                    ? "success"
+                    : "secondary";
 
-              return (
-                <tr key={report.id || index}>
-                  <td>{report.Name}</td>
-                  <td>{report.Email}</td>
-                  <td>{report.ScamSource}</td>
-                  <td>{report.Details}</td>
-                  <td>
-                    <Button
-                      variant={variant}
-                      onMouseEnter={() => setHoveredId(report.id || index)}
-                      onMouseLeave={() => setHoveredId(null)}
-                      onClick={() => toggleBlacklist(report)}
-                    >
-                      {displayText}
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-      )}
-    </Container>
+                return (
+                  <tr key={report.id || index}>
+                    <td>{report.Name}</td>
+                    <td>{report.Email}</td>
+                    <td>{report.ScamSource}</td>
+                    <td>{report.Details}</td>
+                    <td className="text-center">
+                      <Button
+                        variant={variant}
+                        onMouseEnter={() => setHoveredId(report.id || index)}
+                        onMouseLeave={() => setHoveredId(null)}
+                        onClick={() => toggleBlacklist(report)}
+                      >
+                        {displayText}
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        )}
+      </Card.Body>
+    </Card>
+  </Container>
   );
 }
 

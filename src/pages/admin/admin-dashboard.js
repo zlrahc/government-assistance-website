@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Container, Card, Button, Form } from "react-bootstrap";
+import { Col, Row, Container, Card, Button, Form, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AdminFooter from "../../AdminFooter";
 
 function AdminDashboard() {
-
   const [authorized, setAuthorized] = useState(() => {
     return localStorage.getItem("adminAuthorized") === "true";
   });
+
+  const [password, setPassword] = useState("");
 
   const getDailyPassword = () => {
     const today = new Date();
@@ -16,8 +18,6 @@ function AdminDashboard() {
     const secretWord = "verify";
     return `${secretWord}-${year}${month}${day}`;
   };
-
-  const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     if (password === getDailyPassword()) {
@@ -29,12 +29,28 @@ function AdminDashboard() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("adminAuthorized");
+    setAuthorized(false);
+    window.location.href = "/"; // redirect to main home
+  };
+
   if (!authorized) {
     return (
-      <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
-        <Card style={{ width: "100%", maxWidth: "400px", padding: "2rem" }} className="shadow">
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ minHeight: "100vh", backgroundColor: "#f4f4f4" }}
+      >
+        <Card
+          className="shadow-lg rounded-4 p-4"
+          style={{ width: "90%", maxWidth: "400px" }}
+        >
           <Card.Body>
-            <Card.Title className="text-center mb-4">Admin Login</Card.Title>
+            <div className="text-center mb-4">
+              <h2 className="fw-bold">Admin Login</h2>
+              <p className="text-muted">Enter your password to access the panel</p>
+            </div>
+
             <Form>
               <Form.Group controlId="adminPassword" className="mb-3">
                 <Form.Control
@@ -42,30 +58,51 @@ function AdminDashboard() {
                   placeholder="Enter admin password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="shadow-sm rounded-3"
                 />
               </Form.Group>
-              <Button variant="primary" onClick={handleLogin} className="w-100">
+              <Button variant="primary" onClick={handleLogin} className="w-100 fw-semibold">
                 Login
               </Button>
             </Form>
           </Card.Body>
         </Card>
-      </Container>
+      </div>
     );
   }
 
-  return (
-    <div style={{ padding: "2rem" }}>
-      <Container style={{ padding: "2rem" }}>
-        <h1 className="mb-4">Admin Dashboard</h1>
-        <p>Welcome to the admin panel. Use the links below to manage reports and data.</p>
 
-        <Row xs={1} md={2} className="g-4 mt-3">
-          <Col>
-            <Card className="shadow-sm h-100">
-              <Card.Body className="d-flex flex-column justify-content-between">
-                <Card.Title>Scam Reports</Card.Title>
-                <Card.Text>Review submitted scam reports and take action.</Card.Text>
+  return (
+    <>
+          
+      <div className="admin-dashboard-page">
+      {/* HEADER SECTION */}
+      <Container className="text-center pt-4 pb-2">
+        <h1 className="section-heading text-center mb-3">ADMIN DASHBOARD</h1>
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#555",
+            fontSize: "1.1rem",
+          }}
+        >
+          Welcome to the admin panel. Use the links below to manage reports and data.
+        </p>
+      </Container>
+
+      {/* CARDS SECTION */}
+      <Container className="pt-3 pb-5 d-flex justify-content-center">
+        <Row xs={1} className="g-4 mt-3 w-100">
+          <Col className="d-flex justify-content-center">
+            <Card className="shadow-lg border-0 rounded-4 admin-card" style={{ width: "500px" }}>
+              {/* Card header with colored background */}
+              <div className="card-blue-header py-3 text-center rounded-top-4">
+                <h4 className="m-0 fw-bold text-white">Scam Reports</h4>
+              </div>
+
+              <Card.Body className="p-4 text-center">
+                <p className="mb-3">Review submitted scam reports and take action.</p>
                 <Button as={Link} to="/admin-scam-reports" variant="primary">
                   Go to Reports
                 </Button>
@@ -74,7 +111,12 @@ function AdminDashboard() {
           </Col>
         </Row>
       </Container>
+
+
     </div>
+
+      <AdminFooter />
+    </>
   );
 }
 

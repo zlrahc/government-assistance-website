@@ -900,3 +900,53 @@ h1.fw-bold {
   transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
+
+/* ADMIN NAVBAR STYLES */
+.admin-navbar {
+  font-size: large;
+  font-weight: bolder;
+  background-color: #003366; /* Dark blue for admin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.admin-navbar .nav-link-custom {
+  color: #f1f1f1 !important;
+  font-weight: 600;
+  margin: 0 12px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.admin-navbar .nav-link-custom:hover {
+  color: #ffd700 !important; /* Gold hover */
+  border-bottom: 3px solid #ffd700;
+}
+
+.admin-navbar .navbar-brand {
+  color: #ffffff !important;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition: transform 0.2s ease-in-out;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.admin-navbar .navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.admin-navbar .navbar-toggler {
+  border-color: #ffffff;
+}
+
+.admin-navbar .btn-outline-light {
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-navbar .btn-outline-light:hover {
+  background-color: #ffd700;
+  color: #003366;
+  transform: scale(1.05);
+}
+

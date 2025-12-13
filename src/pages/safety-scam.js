@@ -91,7 +91,6 @@ function SafetyScam() {
   return (
 
     <div>
-      {/* Top Header */}
 
       <Container className="text-center pt-4 pb-2">
         <h1 className="section-heading text-center mb-2">SCAM PROTECTION</h1>
@@ -110,7 +109,7 @@ function SafetyScam() {
             width: "100%",
           }}
         >
-          {/* Scam Check Header */}
+          {/*Scam Check Header*/}
           <div
             style={{
               width: "100%",
@@ -135,7 +134,7 @@ function SafetyScam() {
             </p>
           </div>
 
-          {/* How to Use Button */}
+          {/*How to Use Button*/}
           <div className="text-center mt-3 mb-4">
             <Button
               variant="outline-primary"
@@ -146,7 +145,7 @@ function SafetyScam() {
             </Button>
           </div>
 
-          {/* Scam Check Form */}
+          {/*Scam Check Form*/}
           <form
             className="w-100 d-flex mx-auto"
             style={{
@@ -179,7 +178,7 @@ function SafetyScam() {
             </button>
           </form>
 
-          {/* Results */}
+          {/*Results*/}
           {result && (
             <div className="mt-4 mx-auto" style={{ maxWidth: "700px", width: "100%" }}>
               <Card className="p-3 mb-2">
@@ -197,7 +196,6 @@ function SafetyScam() {
                   )}
               </Card>
 
-              {/* Expanded details now work */}
               <Collapse in={open}>
                 <div id="detailed-result">
                   <Card className="p-3 bg-white shadow-sm mt-2">
@@ -260,7 +258,6 @@ function SafetyScam() {
       </Container>
 
 
-      {/* Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>🛡️ Stay Alert, Stay Safe</Modal.Title>
@@ -279,7 +276,7 @@ function SafetyScam() {
       </Modal>
 
 
-      {/* Report Section */}
+      {/*Report Section*/}
       <Container className="my-5 d-flex justify-content-center">
         <Card
           className="p-5 shadow-lg border-0"

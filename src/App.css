@@ -949,4 +949,51 @@ h1.fw-bold {
   color: #003366;
   transform: scale(1.05);
 }
+/* Footer styles */
+.gov-footer {
+  background-color: #003366;
+}
+
+.gov-footer .gov-logo {
+  width: 160px;
+  height: 160px;
+}
+
+.footer-hr {
+  width: 30%;
+  margin: 20px auto;
+  border-color: #fff;
+}
+
+/* Complaint Modal styles */
+.complaint-modal-body {
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.complaint-modal-header .complaint-title {
+  font-weight: 700;
+  color: #003366;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  margin-top: 1rem;
+}
+
+.complaint-modal-header .complaint-subtitle {
+  color: #555;
+  font-size: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.complaint-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.complaint-submit-btn {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
 

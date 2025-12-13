@@ -93,7 +93,7 @@ function App() {
             <h4 className="fw-bold">GOV ASSIST</h4>
             <p className="small mb-1">All content is in the public domain unless otherwise stated.</p>
             <p className="small mb-4">Quezon City, Philippines</p>
-            <hr style={{ width: "30%", margin: "20px auto" }} />
+            <hr className="footer-hr" />
             <h5 className="fw-bold mb-3">Got a Concern?</h5>
             <Button variant="danger" className="fw-semibold px-4 py-2" onClick={() => setShowComplaintModal(true)}>
               Submit a Complaint
@@ -103,6 +103,72 @@ function App() {
           </Container>
         </footer>
       )}
+
+      {/* COMPLAINT MODAL */}
+      <Modal show={showComplaintModal} onHide={() => setShowComplaintModal(false)} centered size="lg">
+        <Modal.Body className="complaint-modal-body">
+          <div className="complaint-modal-header text-center mb-4">
+            <h3 className="complaint-title">File a Complaint</h3>
+            <p className="complaint-subtitle">
+              If you have experienced an issue or wish to raise a concern, please complete the form below.
+            </p>
+          </div>
+
+          <Card className="complaint-card p-4 shadow-sm mx-auto">
+            <h5 className="mb-3 fw-bold">Complaint Details</h5>
+
+            <Form
+              id="complaint-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target;
+                const data = new FormData(form);
+                data.append("data[Status]", "Pending");
+
+                fetch("https://sheetdb.io/api/v1/hylogu3mpv6y6", {
+                  method: "POST",
+                  body: data,
+                })
+                  .then((response) => response.json())
+                  .then(() => {
+                    alert("Thank you! Your complaint has been submitted successfully.");
+                    form.reset();
+                    setShowComplaintModal(false);
+                  })
+                  .catch(() => {
+                    alert("Something went wrong. Please try again.");
+                  });
+              }}
+            >
+              <Form.Group className="mb-3 text-start">
+                <Form.Label className="fw-semibold">Full Name</Form.Label>
+                <Form.Control type="text" name="data[Name]" placeholder="Enter your full name" required />
+              </Form.Group>
+
+              <Form.Group className="mb-3 text-start">
+                <Form.Label className="fw-semibold">Email Address</Form.Label>
+                <Form.Control type="email" name="data[Email]" placeholder="Enter your email" required />
+              </Form.Group>
+
+              <Form.Group className="mb-3 text-start">
+                <Form.Label className="fw-semibold">Complaint Subject</Form.Label>
+                <Form.Control type="text" name="data[Subject]" placeholder="e.g. Slow processing time" required />
+              </Form.Group>
+
+              <Form.Group className="mb-3 text-start">
+                <Form.Label className="fw-semibold">Describe your concern</Form.Label>
+                <Form.Control as="textarea" rows={4} name="data[Details]" placeholder="Provide details" required />
+              </Form.Group>
+
+              <div className="text-end">
+                <Button type="submit" variant="primary" className="complaint-submit-btn">
+                  Submit Complaint
+                </Button>
+              </div>
+            </Form>
+          </Card>
+        </Modal.Body>
+      </Modal>
 
     </Router>
   );
